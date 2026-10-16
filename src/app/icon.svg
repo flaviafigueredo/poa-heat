@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Favicon do projeto: um "globo" feito de listras de aquecimento
+       (warming stripes), do frio à esquerda ao quente à direita.
+       Arquivos de ícone não leem as variáveis do globals.css, então as cores
+       são copiadas de lá: color-background e temp-cold-3 até temp-hot-3.
+       Os nomes aparecem sem os dois traços do início porque o XML não aceita
+       dois traços seguidos dentro de um comentário: o SVG ficaria inválido. -->
+  <defs>
+    <clipPath id="globe">
+      <circle cx="16" cy="16" r="14" />
+    </clipPath>
+  </defs>
+  <rect width="32" height="32" rx="4" fill="#03040a" />
+  <!-- Cada listra tem 4 de largura; o 0.1 a mais evita uma linha fina de
+       fundo aparecendo entre elas por arredondamento. -->
+  <g clip-path="url(#globe)">
+    <rect x="2" y="2" width="4.1" height="28" fill="#8dbdf5" />
+    <rect x="6" y="2" width="4.1" height="28" fill="#5f9be0" />
+    <rect x="10" y="2" width="4.1" height="28" fill="#4f7fb8" />
+    <rect x="14" y="2" width="4.1" height="28" fill="#7a7c84" />
+    <rect x="18" y="2" width="4.1" height="28" fill="#b95c36" />
+    <rect x="22" y="2" width="4.1" height="28" fill="#e07650" />
+    <rect x="26" y="2" width="4" height="28" fill="#ffa587" />
+  </g>
+</svg>

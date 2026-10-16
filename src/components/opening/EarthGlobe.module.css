@@ -1,0 +1,63 @@
+.globe {
+  position: absolute;
+  inset: 0;
+  /* Começa invisível e aparece quando a textura carrega, para não mostrar
+     uma esfera vazia enquanto a imagem baixa. */
+  opacity: 0;
+  transition: opacity 600ms ease-out;
+}
+
+.globe[data-ready="true"] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .globe {
+    transition: none;
+  }
+}
+
+/* Âncora sem tamanho que o globo posiciona: com largura e altura zero, o
+   centro dela cai exatamente na coordenada da cidade. */
+.markerAnchor {
+  width: 0;
+  height: 0;
+}
+
+.marker {
+  /* Tamanho do ponto. O deslocamento abaixo usa a mesma variável, então
+     mudar o tamanho mantém o ponto centrado na cidade. */
+  --marker-size: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  /* O marcador começa com o canto superior esquerdo na cidade. Este
+     deslocamento (meio ponto para a esquerda, metade da altura para cima)
+     coloca o centro do ponto exatamente sobre ela; o rótulo fica à direita. */
+  transform: translate(calc(var(--marker-size) / -2), -50%);
+}
+
+.markerDot {
+  width: var(--marker-size);
+  height: var(--marker-size);
+  border-radius: 50%;
+  background: var(--color-hot);
+  /* Contorno claro para o ponto se destacar tanto no mar quanto no continente. */
+  box-shadow: 0 0 0 2px var(--color-text);
+}
+
+.markerLabel {
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  /* Fundo da página quase opaco: o texto claro fica legível mesmo sobre o
+     continente, que tem partes claras (Andes, desertos). */
+  background: color-mix(in srgb, var(--color-background) 85%, transparent);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}

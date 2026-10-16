@@ -1,0 +1,99 @@
+/* A abertura ocupa a primeira tela inteira. `svh` é a altura da tela com as
+   barras do navegador visíveis, o que evita o salto de layout comum no
+   Safari e no Chrome do celular.
+   Estrelas, globo e véu ficam em `position: absolute` cobrindo tudo. Só o
+   texto participa do fluxo, e o grid decide onde ele fica. */
+.opening {
+  position: relative;
+  /* Cria uma pilha de camadas própria: os z-index daqui não brigam com o
+     resto da página. */
+  isolation: isolate;
+  display: grid;
+  /* Celular: texto embaixo, globo ocupando a parte de cima. */
+  align-items: end;
+  min-height: 100svh;
+  overflow: hidden;
+  padding-inline: var(--page-gutter);
+  padding-block: 2rem 2.5rem;
+}
+
+.globeSlot {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Deixa toques e rolagem passarem direto para a página. */
+  pointer-events: none;
+}
+
+/* Véu escuro entre o globo e o texto. No celular ele sobe a partir de baixo
+   e fica totalmente opaco atrás do texto: partes claras da Terra (como a
+   Antártida) não podem passar por trás das letras e derrubar o contraste.
+   O fim da abertura fica totalmente preto, para o globo não terminar numa
+   linha reta ao rolar. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    var(--color-background) 0%,
+    var(--color-background) 40%,
+    color-mix(in srgb, var(--color-background) 70%, transparent) 50%,
+    transparent 65%
+  );
+}
+
+.text {
+  position: relative;
+  z-index: 3;
+  max-width: 34rem;
+}
+
+.kicker {
+  margin: 0 0 0.75rem;
+  color: var(--color-hot);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 7vw, 4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.dek {
+  margin: 1rem 0 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1.0625rem, 2.4vw, 1.25rem);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* Telas largas: texto centralizado na vertical, à esquerda. O globo é
+   empurrado para a direita (ver EarthGlobe) e o véu vem da esquerda.
+   Mesma largura do breakpoint em globals.css: ao mudar, mudar nos dois. */
+@media (min-width: 900px) {
+  .opening {
+    align-items: center;
+    padding-block: 0;
+  }
+
+  .scrim {
+    background:
+      linear-gradient(to top, var(--color-background) 0%, transparent 22%),
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--color-background) 85%, transparent) 0%,
+        color-mix(in srgb, var(--color-background) 55%, transparent) 30%,
+        transparent 50%
+      );
+  }
+}

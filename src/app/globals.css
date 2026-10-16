@@ -1,49 +1,86 @@
+/* Cores e medidas compartilhadas pela página inteira.
+   A página é sempre escura, com o preto levemente azulado do espaço
+   (não segue o tema do sistema). O texto é um branco suave, não #fff, para
+   não ofuscar sobre o preto. Contraste medido contra --color-background
+   (#03040a): texto 16.7:1, texto secundário 8.4:1, destaque 6.7:1. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-background: #03040a;
+  --color-text: #e6e8ef;
+  --color-text-muted: #a0a6b4;
+  /* Cor de destaque (kicker, marcador do mapa). Hoje é o mesmo tom de
+     --temp-hot-2, mas fica separada de propósito: ajustar a paleta dos
+     gráficos não muda o destaque sem querer. */
+  --color-hot: #e07650;
+
+  /* Halo azul da atmosfera no globo. O EarthGlobe lê esta variável. */
+  --color-atmosphere: #5ea2ff;
+
+  /* Cores das estrelas da abertura. Algumas estrelas reais puxam para o azul
+     ou para o amarelo; um toque leve disso deixa o céu menos artificial. */
+  --star-white: #ffffff;
+  --star-cool: #cfdcff;
+  --star-warm: #fff1d6;
+
+  /* Paleta de temperatura para os gráficos, do frio ao quente.
+     Cada lado tem um matiz só (azul ou vermelho-alaranjado) e fica mais claro
+     e mais intenso quanto mais longe do meio: no fundo escuro, "mais extremo"
+     é o que mais salta aos olhos. Os dois lados têm a mesma claridade em cada
+     degrau, para nenhum lado parecer mais forte que o outro.
+     O meio é um cinza quase sem matiz (só um toque frio, como o fundo),
+     para não parecer nem frio nem quente.
+     Todos os tons passam de 4.5:1 contra o fundo (o mínimo para gráficos é 3:1).
+     O mais baixo é --temp-hot-1, com 4.53:1: escurecer esse tom derruba o
+     limite. Ao mudar qualquer cor, recalcular os números ao lado.
+     A cor nunca vem sozinha: os gráficos também usam rótulos e posição. */
+  --temp-cold-3: #8dbdf5; /* 10.5:1 */
+  --temp-cold-2: #5f9be0; /* 7.1:1 */
+  --temp-cold-1: #4f7fb8; /* 4.9:1 */
+  --temp-neutral: #7a7c84; /* 4.9:1 */
+  --temp-hot-1: #b95c36; /* 4.5:1 */
+  --temp-hot-2: #e07650; /* 6.7:1 */
+  --temp-hot-3: #ffa587; /* 10.7:1 */
+
+  --page-gutter: 1.25rem;
+
+  /* Tipo de layout atual, lido pelo EarthGlobe para posicionar o globo.
+     Media queries não aceitam variáveis, então a largura 900px aparece aqui
+     e em Opening.module.css. Ao mudar, mudar nos dois. */
+  --layout: narrow;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (min-width: 900px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --page-gutter: 3rem;
+    --layout: wide;
   }
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  /* Avisa o navegador que a página é escura: barras de rolagem e campos de
+     formulário nativos também ficam escuros. */
+  color-scheme: dark;
+  background: var(--color-background);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+img,
+canvas {
+  display: block;
+  max-width: 100%;
 }

@@ -1,0 +1,1098 @@
+{
+  "meta": {
+    "source": "Open-Meteo Historical Weather API",
+    "sourceUrl": "https://open-meteo.com/",
+    "license": "CC BY 4.0",
+    "model": "era5_land",
+    "requestedLocation": {
+      "lat": -30.0328,
+      "lng": -51.2302
+    },
+    "gridPoint": {
+      "lat": -30,
+      "lng": -51.199997,
+      "elevation": 36
+    },
+    "startDate": "1950-01-01",
+    "endDate": "2026-10-31",
+    "updatedAt": "2026-11-12",
+    "thresholds": {
+      "hotDay": 30,
+      "veryHotDay": 35,
+      "warmNight": 20
+    },
+    "summerMonths": [
+      12,
+      1,
+      2
+    ]
+  },
+  "years": [
+    {
+      "year": 1950,
+      "meanTemp": 18.94,
+      "daysAbove30": 42,
+      "daysAbove35": 1,
+      "warmNights": 42
+    },
+    {
+      "year": 1951,
+      "meanTemp": 19.14,
+      "daysAbove30": 29,
+      "daysAbove35": 0,
+      "warmNights": 55
+    },
+    {
+      "year": 1952,
+      "meanTemp": 19.34,
+      "daysAbove30": 59,
+      "daysAbove35": 5,
+      "warmNights": 63
+    },
+    {
+      "year": 1953,
+      "meanTemp": 19.69,
+      "daysAbove30": 56,
+      "daysAbove35": 1,
+      "warmNights": 73
+    },
+    {
+      "year": 1954,
+      "meanTemp": 19.23,
+      "daysAbove30": 50,
+      "daysAbove35": 0,
+      "warmNights": 62
+    },
+    {
+      "year": 1955,
+      "meanTemp": 18.96,
+      "daysAbove30": 52,
+      "daysAbove35": 4,
+      "warmNights": 71
+    },
+    {
+      "year": 1956,
+      "meanTemp": 18.58,
+      "daysAbove30": 22,
+      "daysAbove35": 0,
+      "warmNights": 52
+    },
+    {
+      "year": 1957,
+      "meanTemp": 19.32,
+      "daysAbove30": 53,
+      "daysAbove35": 1,
+      "warmNights": 70
+    },
+    {
+      "year": 1958,
+      "meanTemp": 19.31,
+      "daysAbove30": 40,
+      "daysAbove35": 2,
+      "warmNights": 51
+    },
+    {
+      "year": 1959,
+      "meanTemp": 19.25,
+      "daysAbove30": 32,
+      "daysAbove35": 0,
+      "warmNights": 49
+    },
+    {
+      "year": 1960,
+      "meanTemp": 18.82,
+      "daysAbove30": 37,
+      "daysAbove35": 0,
+      "warmNights": 53
+    },
+    {
+      "year": 1961,
+      "meanTemp": 19.86,
+      "daysAbove30": 49,
+      "daysAbove35": 1,
+      "warmNights": 64
+    },
+    {
+      "year": 1962,
+      "meanTemp": 18.65,
+      "daysAbove30": 41,
+      "daysAbove35": 3,
+      "warmNights": 41
+    },
+    {
+      "year": 1963,
+      "meanTemp": 19.51,
+      "daysAbove30": 44,
+      "daysAbove35": 5,
+      "warmNights": 61
+    },
+    {
+      "year": 1964,
+      "meanTemp": 18.48,
+      "daysAbove30": 46,
+      "daysAbove35": 5,
+      "warmNights": 43
+    },
+    {
+      "year": 1965,
+      "meanTemp": 19.47,
+      "daysAbove30": 54,
+      "daysAbove35": 4,
+      "warmNights": 53
+    },
+    {
+      "year": 1966,
+      "meanTemp": 19.01,
+      "daysAbove30": 26,
+      "daysAbove35": 0,
+      "warmNights": 63
+    },
+    {
+      "year": 1967,
+      "meanTemp": 19.67,
+      "daysAbove30": 34,
+      "daysAbove35": 0,
+      "warmNights": 40
+    },
+    {
+      "year": 1968,
+      "meanTemp": 19.2,
+      "daysAbove30": 69,
+      "daysAbove35": 7,
+      "warmNights": 67
+    },
+    {
+      "year": 1969,
+      "meanTemp": 19,
+      "daysAbove30": 32,
+      "daysAbove35": 0,
+      "warmNights": 40
+    },
+    {
+      "year": 1970,
+      "meanTemp": 19.47,
+      "daysAbove30": 50,
+      "daysAbove35": 4,
+      "warmNights": 67
+    },
+    {
+      "year": 1971,
+      "meanTemp": 19.09,
+      "daysAbove30": 48,
+      "daysAbove35": 8,
+      "warmNights": 58
+    },
+    {
+      "year": 1972,
+      "meanTemp": 19.3,
+      "daysAbove30": 40,
+      "daysAbove35": 4,
+      "warmNights": 49
+    },
+    {
+      "year": 1973,
+      "meanTemp": 19.32,
+      "daysAbove30": 47,
+      "daysAbove35": 1,
+      "warmNights": 76
+    },
+    {
+      "year": 1974,
+      "meanTemp": 19.11,
+      "daysAbove30": 37,
+      "daysAbove35": 0,
+      "warmNights": 59
+    },
+    {
+      "year": 1975,
+      "meanTemp": 19.18,
+      "daysAbove30": 43,
+      "daysAbove35": 1,
+      "warmNights": 44
+    },
+    {
+      "year": 1976,
+      "meanTemp": 18.88,
+      "daysAbove30": 50,
+      "daysAbove35": 1,
+      "warmNights": 58
+    },
+    {
+      "year": 1977,
+      "meanTemp": 20.25,
+      "daysAbove30": 68,
+      "daysAbove35": 0,
+      "warmNights": 85
+    },
+    {
+      "year": 1978,
+      "meanTemp": 19.46,
+      "daysAbove30": 36,
+      "daysAbove35": 4,
+      "warmNights": 66
+    },
+    {
+      "year": 1979,
+      "meanTemp": 18.75,
+      "daysAbove30": 52,
+      "daysAbove35": 2,
+      "warmNights": 45
+    },
+    {
+      "year": 1980,
+      "meanTemp": 19.41,
+      "daysAbove30": 55,
+      "daysAbove35": 3,
+      "warmNights": 80
+    },
+    {
+      "year": 1981,
+      "meanTemp": 19.36,
+      "daysAbove30": 40,
+      "daysAbove35": 0,
+      "warmNights": 61
+    },
+    {
+      "year": 1982,
+      "meanTemp": 19.58,
+      "daysAbove30": 47,
+      "daysAbove35": 1,
+      "warmNights": 60
+    },
+    {
+      "year": 1983,
+      "meanTemp": 19.08,
+      "daysAbove30": 47,
+      "daysAbove35": 0,
+      "warmNights": 64
+    },
+    {
+      "year": 1984,
+      "meanTemp": 19.32,
+      "daysAbove30": 61,
+      "daysAbove35": 7,
+      "warmNights": 73
+    },
+    {
+      "year": 1985,
+      "meanTemp": 19.69,
+      "daysAbove30": 53,
+      "daysAbove35": 5,
+      "warmNights": 77
+    },
+    {
+      "year": 1986,
+      "meanTemp": 19.92,
+      "daysAbove30": 51,
+      "daysAbove35": 2,
+      "warmNights": 82
+    },
+    {
+      "year": 1987,
+      "meanTemp": 19.13,
+      "daysAbove30": 45,
+      "daysAbove35": 2,
+      "warmNights": 71
+    },
+    {
+      "year": 1988,
+      "meanTemp": 18.68,
+      "daysAbove30": 56,
+      "daysAbove35": 6,
+      "warmNights": 71
+    },
+    {
+      "year": 1989,
+      "meanTemp": 18.98,
+      "daysAbove30": 48,
+      "daysAbove35": 1,
+      "warmNights": 72
+    },
+    {
+      "year": 1990,
+      "meanTemp": 19.02,
+      "daysAbove30": 51,
+      "daysAbove35": 7,
+      "warmNights": 76
+    },
+    {
+      "year": 1991,
+      "meanTemp": 19.68,
+      "daysAbove30": 56,
+      "daysAbove35": 4,
+      "warmNights": 66
+    },
+    {
+      "year": 1992,
+      "meanTemp": 19.14,
+      "daysAbove30": 43,
+      "daysAbove35": 1,
+      "warmNights": 74
+    },
+    {
+      "year": 1993,
+      "meanTemp": 19.15,
+      "daysAbove30": 48,
+      "daysAbove35": 0,
+      "warmNights": 69
+    },
+    {
+      "year": 1994,
+      "meanTemp": 19.45,
+      "daysAbove30": 41,
+      "daysAbove35": 6,
+      "warmNights": 61
+    },
+    {
+      "year": 1995,
+      "meanTemp": 19.17,
+      "daysAbove30": 50,
+      "daysAbove35": 5,
+      "warmNights": 67
+    },
+    {
+      "year": 1996,
+      "meanTemp": 19.06,
+      "daysAbove30": 43,
+      "daysAbove35": 1,
+      "warmNights": 87
+    },
+    {
+      "year": 1997,
+      "meanTemp": 19.61,
+      "daysAbove30": 43,
+      "daysAbove35": 2,
+      "warmNights": 78
+    },
+    {
+      "year": 1998,
+      "meanTemp": 19.09,
+      "daysAbove30": 29,
+      "daysAbove35": 0,
+      "warmNights": 63
+    },
+    {
+      "year": 1999,
+      "meanTemp": 18.93,
+      "daysAbove30": 41,
+      "daysAbove35": 1,
+      "warmNights": 72
+    },
+    {
+      "year": 2000,
+      "meanTemp": 18.98,
+      "daysAbove30": 42,
+      "daysAbove35": 0,
+      "warmNights": 57
+    },
+    {
+      "year": 2001,
+      "meanTemp": 20.14,
+      "daysAbove30": 50,
+      "daysAbove35": 0,
+      "warmNights": 93
+    },
+    {
+      "year": 2002,
+      "meanTemp": 20.09,
+      "daysAbove30": 55,
+      "daysAbove35": 3,
+      "warmNights": 96
+    },
+    {
+      "year": 2003,
+      "meanTemp": 19.38,
+      "daysAbove30": 44,
+      "daysAbove35": 3,
+      "warmNights": 71
+    },
+    {
+      "year": 2004,
+      "meanTemp": 19.38,
+      "daysAbove30": 48,
+      "daysAbove35": 0,
+      "warmNights": 62
+    },
+    {
+      "year": 2005,
+      "meanTemp": 19.92,
+      "daysAbove30": 66,
+      "daysAbove35": 6,
+      "warmNights": 63
+    },
+    {
+      "year": 2006,
+      "meanTemp": 19.64,
+      "daysAbove30": 52,
+      "daysAbove35": 11,
+      "warmNights": 72
+    },
+    {
+      "year": 2007,
+      "meanTemp": 19.44,
+      "daysAbove30": 61,
+      "daysAbove35": 0,
+      "warmNights": 78
+    },
+    {
+      "year": 2008,
+      "meanTemp": 19.01,
+      "daysAbove30": 36,
+      "daysAbove35": 0,
+      "warmNights": 49
+    },
+    {
+      "year": 2009,
+      "meanTemp": 19.2,
+      "daysAbove30": 47,
+      "daysAbove35": 0,
+      "warmNights": 76
+    },
+    {
+      "year": 2010,
+      "meanTemp": 19.31,
+      "daysAbove30": 40,
+      "daysAbove35": 4,
+      "warmNights": 73
+    },
+    {
+      "year": 2011,
+      "meanTemp": 18.91,
+      "daysAbove30": 35,
+      "daysAbove35": 1,
+      "warmNights": 69
+    },
+    {
+      "year": 2012,
+      "meanTemp": 20.25,
+      "daysAbove30": 81,
+      "daysAbove35": 13,
+      "warmNights": 77
+    },
+    {
+      "year": 2013,
+      "meanTemp": 18.9,
+      "daysAbove30": 42,
+      "daysAbove35": 4,
+      "warmNights": 48
+    },
+    {
+      "year": 2014,
+      "meanTemp": 20.12,
+      "daysAbove30": 58,
+      "daysAbove35": 11,
+      "warmNights": 85
+    },
+    {
+      "year": 2015,
+      "meanTemp": 20.08,
+      "daysAbove30": 35,
+      "daysAbove35": 0,
+      "warmNights": 77
+    },
+    {
+      "year": 2016,
+      "meanTemp": 19.07,
+      "daysAbove30": 60,
+      "daysAbove35": 2,
+      "warmNights": 93
+    },
+    {
+      "year": 2017,
+      "meanTemp": 20.36,
+      "daysAbove30": 62,
+      "daysAbove35": 1,
+      "warmNights": 77
+    },
+    {
+      "year": 2018,
+      "meanTemp": 19.81,
+      "daysAbove30": 50,
+      "daysAbove35": 3,
+      "warmNights": 76
+    },
+    {
+      "year": 2019,
+      "meanTemp": 20.34,
+      "daysAbove30": 73,
+      "daysAbove35": 17,
+      "warmNights": 79
+    },
+    {
+      "year": 2020,
+      "meanTemp": 19.68,
+      "daysAbove30": 66,
+      "daysAbove35": 5,
+      "warmNights": 75
+    },
+    {
+      "year": 2021,
+      "meanTemp": 19.29,
+      "daysAbove30": 48,
+      "daysAbove35": 1,
+      "warmNights": 62
+    },
+    {
+      "year": 2022,
+      "meanTemp": 19.17,
+      "daysAbove30": 64,
+      "daysAbove35": 16,
+      "warmNights": 56
+    },
+    {
+      "year": 2023,
+      "meanTemp": 20.24,
+      "daysAbove30": 69,
+      "daysAbove35": 7,
+      "warmNights": 80
+    },
+    {
+      "year": 2024,
+      "meanTemp": 20.09,
+      "daysAbove30": 63,
+      "daysAbove35": 3,
+      "warmNights": 81
+    },
+    {
+      "year": 2025,
+      "meanTemp": 19.68,
+      "daysAbove30": 69,
+      "daysAbove35": 13,
+      "warmNights": 87
+    }
+  ],
+  "summers": [
+    {
+      "summer": 1951,
+      "meanTemp": 23.94,
+      "daysAbove30": 26,
+      "daysAbove35": 1,
+      "warmNights": 58
+    },
+    {
+      "summer": 1952,
+      "meanTemp": 23.84,
+      "daysAbove30": 34,
+      "daysAbove35": 3,
+      "warmNights": 41
+    },
+    {
+      "summer": 1953,
+      "meanTemp": 24.96,
+      "daysAbove30": 46,
+      "daysAbove35": 3,
+      "warmNights": 51
+    },
+    {
+      "summer": 1954,
+      "meanTemp": 23.6,
+      "daysAbove30": 25,
+      "daysAbove35": 0,
+      "warmNights": 45
+    },
+    {
+      "summer": 1955,
+      "meanTemp": 24.89,
+      "daysAbove30": 54,
+      "daysAbove35": 4,
+      "warmNights": 45
+    },
+    {
+      "summer": 1956,
+      "meanTemp": 23.81,
+      "daysAbove30": 20,
+      "daysAbove35": 0,
+      "warmNights": 51
+    },
+    {
+      "summer": 1957,
+      "meanTemp": 23.69,
+      "daysAbove30": 28,
+      "daysAbove35": 0,
+      "warmNights": 40
+    },
+    {
+      "summer": 1958,
+      "meanTemp": 24.26,
+      "daysAbove30": 34,
+      "daysAbove35": 3,
+      "warmNights": 48
+    },
+    {
+      "summer": 1959,
+      "meanTemp": 23.28,
+      "daysAbove30": 16,
+      "daysAbove35": 0,
+      "warmNights": 33
+    },
+    {
+      "summer": 1960,
+      "meanTemp": 23.28,
+      "daysAbove30": 26,
+      "daysAbove35": 0,
+      "warmNights": 31
+    },
+    {
+      "summer": 1961,
+      "meanTemp": 24.31,
+      "daysAbove30": 40,
+      "daysAbove35": 0,
+      "warmNights": 47
+    },
+    {
+      "summer": 1962,
+      "meanTemp": 23.12,
+      "daysAbove30": 19,
+      "daysAbove35": 0,
+      "warmNights": 28
+    },
+    {
+      "summer": 1963,
+      "meanTemp": 24.11,
+      "daysAbove30": 33,
+      "daysAbove35": 7,
+      "warmNights": 42
+    },
+    {
+      "summer": 1964,
+      "meanTemp": 23.29,
+      "daysAbove30": 27,
+      "daysAbove35": 3,
+      "warmNights": 28
+    },
+    {
+      "summer": 1965,
+      "meanTemp": 23.9,
+      "daysAbove30": 45,
+      "daysAbove35": 4,
+      "warmNights": 40
+    },
+    {
+      "summer": 1966,
+      "meanTemp": 23.47,
+      "daysAbove30": 20,
+      "daysAbove35": 0,
+      "warmNights": 45
+    },
+    {
+      "summer": 1967,
+      "meanTemp": 22.91,
+      "daysAbove30": 14,
+      "daysAbove35": 0,
+      "warmNights": 34
+    },
+    {
+      "summer": 1968,
+      "meanTemp": 24.38,
+      "daysAbove30": 49,
+      "daysAbove35": 3,
+      "warmNights": 40
+    },
+    {
+      "summer": 1969,
+      "meanTemp": 23.59,
+      "daysAbove30": 27,
+      "daysAbove35": 3,
+      "warmNights": 39
+    },
+    {
+      "summer": 1970,
+      "meanTemp": 24.03,
+      "daysAbove30": 34,
+      "daysAbove35": 0,
+      "warmNights": 44
+    },
+    {
+      "summer": 1971,
+      "meanTemp": 23.97,
+      "daysAbove30": 28,
+      "daysAbove35": 3,
+      "warmNights": 50
+    },
+    {
+      "summer": 1972,
+      "meanTemp": 24.31,
+      "daysAbove30": 41,
+      "daysAbove35": 10,
+      "warmNights": 40
+    },
+    {
+      "summer": 1973,
+      "meanTemp": 24.45,
+      "daysAbove30": 39,
+      "daysAbove35": 2,
+      "warmNights": 57
+    },
+    {
+      "summer": 1974,
+      "meanTemp": 23.89,
+      "daysAbove30": 26,
+      "daysAbove35": 0,
+      "warmNights": 47
+    },
+    {
+      "summer": 1975,
+      "meanTemp": 23.12,
+      "daysAbove30": 19,
+      "daysAbove35": 0,
+      "warmNights": 29
+    },
+    {
+      "summer": 1976,
+      "meanTemp": 23.98,
+      "daysAbove30": 34,
+      "daysAbove35": 0,
+      "warmNights": 41
+    },
+    {
+      "summer": 1977,
+      "meanTemp": 24.77,
+      "daysAbove30": 40,
+      "daysAbove35": 1,
+      "warmNights": 59
+    },
+    {
+      "summer": 1978,
+      "meanTemp": 23.8,
+      "daysAbove30": 23,
+      "daysAbove35": 1,
+      "warmNights": 45
+    },
+    {
+      "summer": 1979,
+      "meanTemp": 24.16,
+      "daysAbove30": 40,
+      "daysAbove35": 2,
+      "warmNights": 39
+    },
+    {
+      "summer": 1980,
+      "meanTemp": 23.79,
+      "daysAbove30": 32,
+      "daysAbove35": 0,
+      "warmNights": 42
+    },
+    {
+      "summer": 1981,
+      "meanTemp": 24.29,
+      "daysAbove30": 33,
+      "daysAbove35": 0,
+      "warmNights": 59
+    },
+    {
+      "summer": 1982,
+      "meanTemp": 23.26,
+      "daysAbove30": 25,
+      "daysAbove35": 1,
+      "warmNights": 29
+    },
+    {
+      "summer": 1983,
+      "meanTemp": 23.98,
+      "daysAbove30": 37,
+      "daysAbove35": 0,
+      "warmNights": 57
+    },
+    {
+      "summer": 1984,
+      "meanTemp": 25.48,
+      "daysAbove30": 50,
+      "daysAbove35": 6,
+      "warmNights": 62
+    },
+    {
+      "summer": 1985,
+      "meanTemp": 23.06,
+      "daysAbove30": 23,
+      "daysAbove35": 0,
+      "warmNights": 36
+    },
+    {
+      "summer": 1986,
+      "meanTemp": 24.69,
+      "daysAbove30": 44,
+      "daysAbove35": 3,
+      "warmNights": 57
+    },
+    {
+      "summer": 1987,
+      "meanTemp": 23.96,
+      "daysAbove30": 26,
+      "daysAbove35": 0,
+      "warmNights": 49
+    },
+    {
+      "summer": 1988,
+      "meanTemp": 23.73,
+      "daysAbove30": 26,
+      "daysAbove35": 1,
+      "warmNights": 47
+    },
+    {
+      "summer": 1989,
+      "meanTemp": 24.24,
+      "daysAbove30": 32,
+      "daysAbove35": 0,
+      "warmNights": 48
+    },
+    {
+      "summer": 1990,
+      "meanTemp": 24.38,
+      "daysAbove30": 42,
+      "daysAbove35": 5,
+      "warmNights": 56
+    },
+    {
+      "summer": 1991,
+      "meanTemp": 23.25,
+      "daysAbove30": 32,
+      "daysAbove35": 3,
+      "warmNights": 23
+    },
+    {
+      "summer": 1992,
+      "meanTemp": 24.35,
+      "daysAbove30": 29,
+      "daysAbove35": 0,
+      "warmNights": 61
+    },
+    {
+      "summer": 1993,
+      "meanTemp": 23.52,
+      "daysAbove30": 25,
+      "daysAbove35": 1,
+      "warmNights": 39
+    },
+    {
+      "summer": 1994,
+      "meanTemp": 23.26,
+      "daysAbove30": 22,
+      "daysAbove35": 0,
+      "warmNights": 42
+    },
+    {
+      "summer": 1995,
+      "meanTemp": 24.23,
+      "daysAbove30": 28,
+      "daysAbove35": 5,
+      "warmNights": 58
+    },
+    {
+      "summer": 1996,
+      "meanTemp": 24.08,
+      "daysAbove30": 31,
+      "daysAbove35": 6,
+      "warmNights": 57
+    },
+    {
+      "summer": 1997,
+      "meanTemp": 24.53,
+      "daysAbove30": 32,
+      "daysAbove35": 1,
+      "warmNights": 66
+    },
+    {
+      "summer": 1998,
+      "meanTemp": 23.97,
+      "daysAbove30": 19,
+      "daysAbove35": 1,
+      "warmNights": 58
+    },
+    {
+      "summer": 1999,
+      "meanTemp": 23.39,
+      "daysAbove30": 20,
+      "daysAbove35": 0,
+      "warmNights": 43
+    },
+    {
+      "summer": 2000,
+      "meanTemp": 23.66,
+      "daysAbove30": 29,
+      "daysAbove35": 1,
+      "warmNights": 41
+    },
+    {
+      "summer": 2001,
+      "meanTemp": 24.55,
+      "daysAbove30": 34,
+      "daysAbove35": 0,
+      "warmNights": 66
+    },
+    {
+      "summer": 2002,
+      "meanTemp": 23.35,
+      "daysAbove30": 18,
+      "daysAbove35": 0,
+      "warmNights": 41
+    },
+    {
+      "summer": 2003,
+      "meanTemp": 24.29,
+      "daysAbove30": 28,
+      "daysAbove35": 2,
+      "warmNights": 57
+    },
+    {
+      "summer": 2004,
+      "meanTemp": 23.22,
+      "daysAbove30": 18,
+      "daysAbove35": 0,
+      "warmNights": 35
+    },
+    {
+      "summer": 2005,
+      "meanTemp": 24.2,
+      "daysAbove30": 40,
+      "daysAbove35": 4,
+      "warmNights": 42
+    },
+    {
+      "summer": 2006,
+      "meanTemp": 24.3,
+      "daysAbove30": 31,
+      "daysAbove35": 8,
+      "warmNights": 47
+    },
+    {
+      "summer": 2007,
+      "meanTemp": 24.62,
+      "daysAbove30": 38,
+      "daysAbove35": 1,
+      "warmNights": 52
+    },
+    {
+      "summer": 2008,
+      "meanTemp": 23.55,
+      "daysAbove30": 25,
+      "daysAbove35": 0,
+      "warmNights": 32
+    },
+    {
+      "summer": 2009,
+      "meanTemp": 23.28,
+      "daysAbove30": 24,
+      "daysAbove35": 0,
+      "warmNights": 38
+    },
+    {
+      "summer": 2010,
+      "meanTemp": 24.78,
+      "daysAbove30": 37,
+      "daysAbove35": 4,
+      "warmNights": 56
+    },
+    {
+      "summer": 2011,
+      "meanTemp": 24.22,
+      "daysAbove30": 20,
+      "daysAbove35": 0,
+      "warmNights": 66
+    },
+    {
+      "summer": 2012,
+      "meanTemp": 24.36,
+      "daysAbove30": 42,
+      "daysAbove35": 7,
+      "warmNights": 42
+    },
+    {
+      "summer": 2013,
+      "meanTemp": 24.27,
+      "daysAbove30": 37,
+      "daysAbove35": 7,
+      "warmNights": 40
+    },
+    {
+      "summer": 2014,
+      "meanTemp": 25.44,
+      "daysAbove30": 47,
+      "daysAbove35": 14,
+      "warmNights": 61
+    },
+    {
+      "summer": 2015,
+      "meanTemp": 24.52,
+      "daysAbove30": 30,
+      "daysAbove35": 0,
+      "warmNights": 59
+    },
+    {
+      "summer": 2016,
+      "meanTemp": 24.6,
+      "daysAbove30": 34,
+      "daysAbove35": 1,
+      "warmNights": 61
+    },
+    {
+      "summer": 2017,
+      "meanTemp": 25.16,
+      "daysAbove30": 44,
+      "daysAbove35": 1,
+      "warmNights": 67
+    },
+    {
+      "summer": 2018,
+      "meanTemp": 23.89,
+      "daysAbove30": 26,
+      "daysAbove35": 1,
+      "warmNights": 44
+    },
+    {
+      "summer": 2019,
+      "meanTemp": 25.16,
+      "daysAbove30": 44,
+      "daysAbove35": 12,
+      "warmNights": 63
+    },
+    {
+      "summer": 2020,
+      "meanTemp": 24.83,
+      "daysAbove30": 48,
+      "daysAbove35": 9,
+      "warmNights": 49
+    },
+    {
+      "summer": 2021,
+      "meanTemp": 24.19,
+      "daysAbove30": 30,
+      "daysAbove35": 1,
+      "warmNights": 50
+    },
+    {
+      "summer": 2022,
+      "meanTemp": 24.87,
+      "daysAbove30": 45,
+      "daysAbove35": 15,
+      "warmNights": 40
+    },
+    {
+      "summer": 2023,
+      "meanTemp": 24.81,
+      "daysAbove30": 45,
+      "daysAbove35": 7,
+      "warmNights": 46
+    },
+    {
+      "summer": 2024,
+      "meanTemp": 24.64,
+      "daysAbove30": 37,
+      "daysAbove35": 4,
+      "warmNights": 51
+    },
+    {
+      "summer": 2025,
+      "meanTemp": 24.31,
+      "daysAbove30": 36,
+      "daysAbove35": 5,
+      "warmNights": 50
+    },
+    {
+      "summer": 2026,
+      "meanTemp": 24.59,
+      "daysAbove30": 38,
+      "daysAbove35": 4,
+      "warmNights": 51
+    }
+  ]
+}

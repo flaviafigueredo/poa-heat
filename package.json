@@ -2,11 +2,13 @@
   "name": "poa-heat",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint",
-    "typecheck": "next typegen && tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit",
+    "data": "node scripts/fetch-temperature.ts"
   },
   "engines": {
     "node": ">=20.9.0"

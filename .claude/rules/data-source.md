@@ -12,7 +12,12 @@
 - `longitude`: -51.2302 (centro de Porto Alegre, preenchido pela busca da própria documentação)
 - `daily`: `temperature_2m_min,temperature_2m_max,temperature_2m_mean`
 - `timezone`: `America/Sao_Paulo`
-- `start_date`: `1940-01-01`
+- `start_date`: `1950-01-01` (o ERA5-Land começa em 1950; antes disso a API devolve `null`)
 - `end_date`: último dia do último mês completo
-- `models`: obrigatório fixar um único modelo (ERA5 ou ERA5-Land) para todo o projeto. Sem esse parâmetro a API usa "best match", que mistura modelos ao longo do tempo e quebra a comparação entre décadas. Escolha ainda em aberto.
-- Registrar as coordenadas devolvidas pela API (o ponto da grade usado de fato), porque elas entram na seção de metodologia.
+- `models`: `era5_land`, fixo para todo o projeto. Sem esse parâmetro a API usa "best match", que mistura modelos ao longo do tempo e quebra a comparação entre décadas.
+- Registrar as coordenadas devolvidas pela API (o ponto da grade usado de fato), porque elas entram na seção de metodologia. Em teste de 12/11/2026, a API devolveu -30.0, -51.2.
+
+## Por que ERA5-Land (decisão de 12/11/2026)
+
+- Grade de ~9 km, contra ~25 km do ERA5. Porto Alegre fica do lado do Guaíba, e a grade menor separa melhor a cidade da água, o que pesa nos capítulos de extremos e de noites quentes.
+- O custo é perder a década de 1940: a série começa em 1950.

@@ -1,0 +1,53 @@
+# Atualiza os dados de temperatura uma vez por mês.
+# Roda o script da Open-Meteo e, se o JSON mudou, faz commit na main.
+# Esse commit dispara o deploy automático do Cloudflare Pages.
+
+name: Update temperature data
+
+on:
+  schedule:
+    # Formato do cron: minuto, hora, dia do mês, mês, dia da semana.
+    # "0 9 10 * *" = dia 10 de todo mês, às 9h UTC (6h em Brasília).
+    # Dia 10 porque o ERA5-Land chega com alguns dias de atraso: no dia 1º,
+    # os últimos dias do mês anterior ainda podem vir vazios.
+    - cron: "0 9 10 * *"
+  # Mostra o botão "Run workflow" na aba Actions, para rodar à mão.
+  workflow_dispatch:
+
+# Por padrão o workflow só pode ler o repositório. Este precisa escrever,
+# porque faz commit do JSON atualizado.
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      # Usa a mesma versão do Node do projeto, lida do .nvmrc.
+      # Não precisa de npm install: o script só usa recursos do próprio Node.
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      # Se a API falhar ou vier um dia sem valor, o script termina com erro,
+      # o workflow para aqui e nada é commitado.
+      - name: Fetch temperature data
+        run: npm run data
+
+      # `git diff --quiet` termina com sucesso quando não há mudança.
+      # Só faz commit e push quando o JSON mudou de fato.
+      - name: Commit updated data
+        run: |
+          if git diff --quiet -- src/data/temperature.json; then
+            echo "Sem mudanças nos dados."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/temperature.json
+          git commit -m "chore(data): update temperature data"
+          git push

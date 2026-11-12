@@ -19,7 +19,7 @@ const sans = Inter({
 export const metadata: Metadata = {
   title: siteTitle,
   description:
-    "Mais de 80 anos de temperatura diária em Porto Alegre, de 1940 até hoje, contados em gráficos.",
+    "Mais de 75 anos de temperatura diária em Porto Alegre, de 1950 até hoje, contados em gráficos.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

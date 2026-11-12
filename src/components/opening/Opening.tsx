@@ -34,7 +34,7 @@ export function Opening() {
           {siteTitle}
         </h1>
         <p className={styles.dek}>
-          Mais de 80 anos de temperatura diária, de 1940 até hoje, mostram o
+          Mais de 75 anos de temperatura diária, de 1950 até hoje, mostram o
           que mudou nos dias e nas noites da cidade.
         </p>
       </div>

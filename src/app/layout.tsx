@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={`${serif.variable} ${sans.variable}`}>
-      {/* Extensões de navegador (como a ColorZilla) colocam atributos no
+      {/* Extensões de navegador colocam atributos no
           <body> antes de o React carregar, e o React acusa diferença entre o
           HTML do servidor e o da página. `suppressHydrationWarning` ignora
           isso só nos atributos desta tag; erros no conteúdo continuam aparecendo. */}

@@ -12,22 +12,28 @@
 - Coordenadas de Porto Alegre em `src/lib/portoAlegre.ts`, para o script de dados reaproveitar.
 - Favicon próprio em `src/app/icon.svg` (círculo com listras de aquecimento nas cores da paleta), aprovado pela Flávia. O `favicon.ico` padrão do Next foi removido. Comentários dentro do SVG não podem ter `--`, senão o arquivo fica inválido.
 - `<body>` com `suppressHydrationWarning`, porque extensões de navegador que alteram o HTML geram aviso de hidratação.
-- Instruções do projeto divididas em `.claude/rules/`, com as referências visuais do dashboard e o escopo novo (PRs #1 e #2, já na `main`).
+- Instruções do projeto divididas em `.claude/rules/`, com as referências visuais do dashboard e o escopo novo.
 - Modelo de dados escolhido: ERA5-Land, com série desde 1950 (ver `data-source.md`).
+- Script de dados em `scripts/fetch-temperature.ts`, rodando com `npm run data` (Node 24 executa TypeScript direto, sem dependências). Gera `src/data/temperature.json` com:
+  - `meta`: fonte, licença, modelo, coordenadas pedidas, ponto da grade, período e data da atualização.
+  - `years`: um item por ano completo (1950 a 2025), com temperatura média, dias acima de 30 °C e de 35 °C e noites com mínima ≥ 20 °C.
+  - `summers`: os mesmos números por verão (dezembro, janeiro e fevereiro; o verão leva o ano de janeiro). Só verões completos (1951 a 2026).
+  - Se a API falhar ou vier dia sem valor, o script para com erro e não salva nada. A API bloqueia por um minuto quem faz pedidos demais.
+- `package.json` com `"type": "module"` e `tsconfig.json` com `allowImportingTsExtensions`, para o script importar `src/lib/portoAlegre.ts`.
+- Workflow `.github/workflows/update-data.yml`: roda no dia 10 de cada mês (o ERA5-Land chega com alguns dias de atraso) e tem botão para rodar à mão. Faz commit na `main` só se o JSON mudou. Testado à mão em 12/11/2026, terminou verde.
 
 ## Próximos passos
 
-1. Script de dados: buscar na Open-Meteo, calcular os números e salvar o JSON, junto com o modelo, o ponto da grade e a data de atualização.
-2. Workflow do GitHub Actions para rodar o script uma vez por mês.
-3. Olhar os dados e montar a história: qual pergunta cada gráfico responde, período de referência e quais painéis entram no painel final.
-4. Escolher a biblioteca de gráficos.
-5. Construir os capítulos 1 a 4 (número em destaque, gráfico e interações).
-6. Construir o painel final, com a luz no hover.
-7. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
-8. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
+1. Olhar os dados e montar a história: qual pergunta cada gráfico responde, período de referência e quais painéis entram no painel final.
+   - Primeira olhada (média por ano em cada período): de 1950–1959 para 2016–2025, a temperatura média foi de 19,2 °C para 19,8 °C, os dias acima de 30 °C de 43,5 para 62,4, os acima de 35 °C de 1,4 para 6,8 e as noites com mínima ≥ 20 °C de 58,8 para 76,6. Os extremos mudam bem mais que a média.
+2. Escolher a biblioteca de gráficos.
+3. Construir os capítulos 1 a 4 (número em destaque, gráfico e interações).
+4. Construir o painel final, com a luz no hover.
+5. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
+6. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
 
 ## Pendências pequenas
 
 - `npm audit` aponta 5 vulnerabilidades altas, todas no `braces` dentro do `eslint-config-next` (só lint, não vai para o site, sem versão corrigida). Aceito por enquanto; nunca rodar `npm audit fix --force`, que instalaria a config do Next 14.
-- Textos "Mais de 80 anos" e "de 1940 até hoje" na abertura (`Opening.tsx`) e na descrição da página (`layout.tsx`) devem passar a vir do JSON quando o script de dados existir. Por enquanto estão escritos à mão ("Mais de 75 anos", "de 1950 até hoje").
+- Textos "Mais de 75 anos" e "de 1950 até hoje" na abertura (`Opening.tsx`) e na descrição da página (`layout.tsx`) ainda estão escritos à mão. Devem passar a vir do JSON (`meta.startDate`).
 - A seção de fontes precisa citar a NASA pelas imagens da Terra.

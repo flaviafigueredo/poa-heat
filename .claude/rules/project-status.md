@@ -24,12 +24,11 @@
 
 ## Próximos passos
 
-1. Escolher os painéis do painel final e o nome da seção. Período de referência (1961 a 1990, em `analysis-care.md`) e perguntas dos capítulos 1 a 4 (em `chapters.md`) já decididos.
-2. Escolher a biblioteca de gráficos.
-3. Construir os capítulos 1 a 4 (número em destaque, gráfico e interações).
-4. Construir o painel final, com a luz no hover.
-5. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
-6. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
+1. Escolher a biblioteca de gráficos. A história já está definida: período de referência em `analysis-care.md`, perguntas dos capítulos 1 a 4 e painéis do "Explore os dados" em `chapters.md`.
+2. Construir os capítulos 1 a 4 (número em destaque, gráfico e interações).
+3. Construir o painel final, com a luz no hover.
+4. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
+5. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
 
 ## Pendências pequenas
 

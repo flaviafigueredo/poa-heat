@@ -33,6 +33,20 @@ Os valores entre parênteses são dos dados de 12/11/2026 (2016 a 2025) e servem
 - Fica depois do capítulo 4 e antes do capítulo 5 (metodologia).
 - É um dashboard em grade de painéis, para explorar os dados da matéria (ver "Painel final" em `design.md`).
 - Os capítulos 1 a 4 continuam contando a história na rolagem, sem caixas.
+- Título da seção: "Explore os dados".
+
+### Painéis (decisão de 16/11/2026)
+
+Todos usam só o que o JSON já tem (`years` e `summers`) e comparam com a base de 1961 a 1990.
+
+1. **Listras do calor** (painel grande): uma listra por ano desde 1950, colorida pela diferença para a média da base, com a paleta de temperatura. No hover ou toque, ano e diferença em °C.
+   - Pergunta: quais anos foram mais quentes ou mais frios que a média de 1961 a 1990?
+2. **O teu ano**: a pessoa escolhe um ano e vê a média, os dias acima de 30 °C e de 35 °C e as noites quentes daquele ano, ao lado dos mesmos números do último ano completo.
+   - Pergunta: como foi o ano em que tu nasceste, comparado com hoje?
+3. **Os recordes**: lista curta com o ano mais quente, o ano com mais dias acima de 35 °C, o verão mais quente e o ano com mais noites quentes, cada um com o valor.
+   - Pergunta: quais foram os anos e verões mais extremos?
+4. **Verão a verão**: barras com os dias acima de 35 °C em cada verão desde 1951, com a média da base marcada.
+   - Pergunta: quais verões tiveram mais dias acima de 35 °C?
 
 ## Footer
 

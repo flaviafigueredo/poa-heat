@@ -2,10 +2,27 @@
 
 Cada capítulo de gráfico (1 a 4) abre com um número em destaque vindo do JSON (ver "Capítulos 1 a 4" em `design.md`).
 
-1. **A tendência:** temperatura média por ano desde 1950, com linha de tendência.
+Comparação comum a todos os capítulos (decisão de 16/11/2026): os últimos 10 anos completos contra a base de 1961 a 1990 (ver `analysis-care.md`). A janela anda sozinha quando o workflow traz um ano novo. Não comparar década com década no número em destaque, porque a década atual está incompleta.
+
+Os valores entre parênteses são dos dados de 12/11/2026 (2016 a 2025) e servem só de referência: na página, tudo vem do JSON.
+
+1. **A tendência:** temperatura média por ano desde 1950, com linha de tendência e a faixa de 1961 a 1990 marcada.
+   - Pergunta: Porto Alegre está mais quente do que antes?
+   - Destaque: diferença da média dos últimos 10 anos para a base (+0,5 °C).
+   - Anotação possível: quantos anos desde 2000 ficaram acima da média da base (19 de 26).
+   - Texto: a alta é lenta e varia muito de ano para ano. Sem exagero.
 2. **Os extremos:** quantos dias por ano passaram de 30°C ou 35°C, agrupados por década.
+   - Pergunta: os dias de calor forte ficaram mais comuns?
+   - Destaque: dias por ano acima de 35 °C (6,8, contra 2,8 na base). Os dias acima de 30 °C ficam no gráfico, não no destaque.
+   - Anotação possível: quatro dos cinco anos com mais dias acima de 35 °C são de 2012 para cá.
+   - A década atual leva o aviso "década em andamento".
 3. **As noites:** quantas noites não baixaram de 20°C.
-4. **O teu verão vs o dos teus pais:** comparação entre uma década recente e uma antiga, numa frase simples.
+   - Pergunta: as noites ficaram mais quentes?
+   - Destaque: noites por ano com mínima de 20 °C ou mais (77, contra 62 na base).
+   - Texto: o número subiu de uma vez nos anos 1980 e depois ficou estável. Não vender como subida contínua.
+4. **O teu verão vs o dos teus pais:** uma frase simples comparando o verão (dezembro a fevereiro) dos últimos 10 anos com o da base.
+   - Pergunta: como é um verão hoje, comparado com o de uma geração atrás?
+   - Foco só nos dias acima de 35 °C (5,6 por verão, contra 1,8 na base). Ex.: "Um verão típico hoje tem 5 ou 6 dias acima de 35 °C. No verão dos teus pais, eram 1 ou 2."
 5. **Como os dados foram feitos:** fonte, o que é reanálise e limites da análise.
    - É uma `<section>` com título próprio no fim do `<main>`, não o footer: fontes e metodologia são conteúdo da matéria (padrão "Metodologia" do NYT e do The Pudding).
    - Conteúdo: Open-Meteo com licença CC BY 4.0, modelo usado (ERA5-Land) e o ponto da grade devolvido pela API; o que é reanálise em linguagem simples; limites da análise (mostra o que aconteceu, não prova a causa sozinha); créditos das imagens da Terra (NASA Blue Marble Next Generation e GEBCO); data da última atualização.

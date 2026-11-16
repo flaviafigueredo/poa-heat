@@ -1,4 +1,4 @@
-# Onde paramos (12/11/2026)
+# Onde paramos (16/11/2026)
 
 ## Pronto
 
@@ -24,8 +24,7 @@
 
 ## Próximos passos
 
-1. Olhar os dados e montar a história: qual pergunta cada gráfico responde, período de referência e quais painéis entram no painel final.
-   - Primeira olhada (média por ano em cada período): de 1950–1959 para 2016–2025, a temperatura média foi de 19,2 °C para 19,8 °C, os dias acima de 30 °C de 43,5 para 62,4, os acima de 35 °C de 1,4 para 6,8 e as noites com mínima ≥ 20 °C de 58,8 para 76,6. Os extremos mudam bem mais que a média.
+1. Escolher os painéis do painel final e o nome da seção. Período de referência (1961 a 1990, em `analysis-care.md`) e perguntas dos capítulos 1 a 4 (em `chapters.md`) já decididos.
 2. Escolher a biblioteca de gráficos.
 3. Construir os capítulos 1 a 4 (número em destaque, gráfico e interações).
 4. Construir o painel final, com a luz no hover.

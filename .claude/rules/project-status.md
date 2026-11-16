@@ -24,7 +24,7 @@
 
 ## Próximos passos
 
-1. Escolher a biblioteca de gráficos. A história já está definida: período de referência em `analysis-care.md`, perguntas dos capítulos 1 a 4 e painéis do "Explore os dados" em `chapters.md`.
+1. Calcular no script os números de comparação (médias da base de 1961 a 1990 e dos últimos 10 anos completos) e salvar no JSON. A história já está definida (`analysis-care.md` e `chapters.md`) e a biblioteca escolhida: D3 com React (`stack-and-architecture.md`).
 2. Construir os capítulos 1 a 4 (número em destaque, gráfico e interações).
 3. Construir o painel final, com a luz no hover.
 4. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.

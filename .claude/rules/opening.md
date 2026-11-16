@@ -4,7 +4,7 @@
 - Manter simples: usar uma biblioteca pronta de globo 3D, sem modelagem própria.
 - Precisa funcionar bem no celular.
 - Respeitar `prefers-reduced-motion`: quem desativa animações vê uma versão estática.
-- Prazo fechado. Se travar, simplificar em vez de expandir.
+- Se travar, simplificar em vez de expandir.
 
 ## Visual da abertura
 

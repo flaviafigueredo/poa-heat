@@ -15,7 +15,7 @@
     },
     "startDate": "1950-01-01",
     "endDate": "2026-10-31",
-    "updatedAt": "2026-11-12",
+    "updatedAt": "2026-11-16",
     "thresholds": {
       "hotDay": 30,
       "veryHotDay": 35,
@@ -26,6 +26,45 @@
       1,
       2
     ]
+  },
+  "comparison": {
+    "baseline": {
+      "startYear": 1961,
+      "endYear": 1990,
+      "years": {
+        "meanTemp": 19.26,
+        "daysAbove30": 47.33,
+        "daysAbove35": 2.8,
+        "warmNights": 62.2
+      },
+      "summers": {
+        "meanTemp": 23.95,
+        "daysAbove30": 32.27,
+        "daysAbove35": 1.83,
+        "warmNights": 44.53
+      }
+    },
+    "recent": {
+      "years": {
+        "startYear": 2016,
+        "endYear": 2025,
+        "meanTemp": 19.77,
+        "daysAbove30": 62.4,
+        "daysAbove35": 6.8,
+        "warmNights": 76.6
+      },
+      "summers": {
+        "startYear": 2017,
+        "endYear": 2026,
+        "meanTemp": 24.65,
+        "daysAbove30": 39.3,
+        "daysAbove35": 5.9,
+        "warmNights": 51.1
+      }
+    },
+    "trend": {
+      "meanTempPerDecade": 0.082
+    }
   },
   "years": [
     {
@@ -1093,6 +1132,80 @@
       "daysAbove30": 38,
       "daysAbove35": 4,
       "warmNights": 51
+    }
+  ],
+  "decades": [
+    {
+      "decade": 1950,
+      "yearCount": 10,
+      "complete": true,
+      "meanTemp": 19.18,
+      "daysAbove30": 43.5,
+      "daysAbove35": 1.4,
+      "warmNights": 58.8
+    },
+    {
+      "decade": 1960,
+      "yearCount": 10,
+      "complete": true,
+      "meanTemp": 19.17,
+      "daysAbove30": 43.2,
+      "daysAbove35": 2.5,
+      "warmNights": 52.5
+    },
+    {
+      "decade": 1970,
+      "yearCount": 10,
+      "complete": true,
+      "meanTemp": 19.28,
+      "daysAbove30": 47.1,
+      "daysAbove35": 2.5,
+      "warmNights": 60.7
+    },
+    {
+      "decade": 1980,
+      "yearCount": 10,
+      "complete": true,
+      "meanTemp": 19.32,
+      "daysAbove30": 50.3,
+      "daysAbove35": 2.7,
+      "warmNights": 71.1
+    },
+    {
+      "decade": 1990,
+      "yearCount": 10,
+      "complete": true,
+      "meanTemp": 19.23,
+      "daysAbove30": 44.5,
+      "daysAbove35": 2.7,
+      "warmNights": 71.3
+    },
+    {
+      "decade": 2000,
+      "yearCount": 10,
+      "complete": true,
+      "meanTemp": 19.52,
+      "daysAbove30": 50.1,
+      "daysAbove35": 2.3,
+      "warmNights": 71.7
+    },
+    {
+      "decade": 2010,
+      "yearCount": 10,
+      "complete": true,
+      "meanTemp": 19.72,
+      "daysAbove30": 53.6,
+      "daysAbove35": 5.6,
+      "warmNights": 75.4
+    },
+    {
+      "decade": 2020,
+      "yearCount": 6,
+      "complete": false,
+      "meanTemp": 19.69,
+      "daysAbove30": 63.17,
+      "daysAbove35": 7.5,
+      "warmNights": 73.5
     }
   ]
 }

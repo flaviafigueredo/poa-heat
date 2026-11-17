@@ -21,6 +21,13 @@ const thresholds = {
   warmNight: 20,
 };
 
+// Base de comparação dos capítulos: a referência climática clássica, anterior
+// à maior parte do aquecimento. O período recente não é fixo: são sempre os
+// últimos `recentLength` anos (ou verões) completos, então ele anda sozinho
+// quando o workflow traz um ano novo.
+const baseline = { startYear: 1961, endYear: 1990 };
+const recentLength = 10;
+
 // Formato da resposta da API. Os nomes com underline são os que a API usa;
 // logo abaixo eles viram camelCase no tipo `DailyRecord`.
 type ArchiveResponse = {
@@ -51,6 +58,9 @@ type PeriodSummary = {
   warmNights: number;
 };
 
+type YearSummary = PeriodSummary & { year: number };
+type SummerSummary = PeriodSummary & { summer: number };
+
 // Último dia do último mês completo, no fuso de Porto Alegre.
 // Ex.: rodando em 12/11/2026, devolve "2026-10-31".
 function getEndDate(): string {
@@ -67,6 +77,13 @@ function getEndDate(): string {
   // mês atual, e o dia 0 dele cai no fim do mês passado.
   const lastDay = new Date(Date.UTC(year, month - 1, 0));
   return lastDay.toISOString().slice(0, 10);
+}
+
+// Data de hoje no fuso de Porto Alegre, no formato AAAA-MM-DD. O
+// `toISOString` usaria o horário UTC, que vira o dia às 21h de Brasília.
+// O formato "en-CA" já escreve a data como AAAA-MM-DD.
+function getTodayInPortoAlegre(): string {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: timezone }).format(new Date());
 }
 
 async function fetchDaily(endDate: string): Promise<ArchiveResponse> {
@@ -153,7 +170,7 @@ function summarize(days: DailyRecord[]): PeriodSummary {
 // Agrupa os dias por ano e calcula os números de cada um. Só entram anos com
 // todos os dias: um ano pela metade (como o ano corrente) pareceria mais
 // frio ou mais quente só por faltar uma estação inteira.
-function buildYears(records: DailyRecord[]) {
+function buildYears(records: DailyRecord[]): YearSummary[] {
   const daysByYear = Map.groupBy(records, (record) => record.year);
 
   return [...daysByYear]
@@ -164,7 +181,7 @@ function buildYears(records: DailyRecord[]) {
 // Verão meteorológico: dezembro, janeiro e fevereiro. O verão leva o ano de
 // janeiro e fevereiro, então o verão de 2025 junta dezembro de 2024 com
 // janeiro e fevereiro de 2025.
-function buildSummers(records: DailyRecord[]) {
+function buildSummers(records: DailyRecord[]): SummerSummary[] {
   const summerDays = records.filter((record) =>
     [12, 1, 2].includes(record.month),
   );
@@ -181,6 +198,123 @@ function buildSummers(records: DailyRecord[]) {
     .map(([summer, days]) => ({ summer, ...summarize(days) }));
 }
 
+// Média de cada número num grupo de anos ou verões. Os dias viram média por
+// ano (ex.: 6,8 dias acima de 35 °C por ano), por isso também têm decimais.
+function averageSummaries(items: PeriodSummary[]): PeriodSummary {
+  const average = (pick: (item: PeriodSummary) => number) =>
+    roundTo(items.reduce((sum, item) => sum + pick(item), 0) / items.length, 2);
+
+  return {
+    meanTemp: average((item) => item.meanTemp),
+    daysAbove30: average((item) => item.daysAbove30),
+    daysAbove35: average((item) => item.daysAbove35),
+    warmNights: average((item) => item.warmNights),
+  };
+}
+
+// Pega os itens de um período e confere se todos estão lá. Uma média com
+// anos faltando compararia períodos de tamanhos diferentes sem avisar.
+function pickPeriod<T>(
+  items: T[],
+  getYear: (item: T) => number,
+  startYear: number,
+  endYear: number,
+): T[] {
+  const selected = items.filter((item) => {
+    const year = getYear(item);
+    return year >= startYear && year <= endYear;
+  });
+
+  const expected = endYear - startYear + 1;
+  if (selected.length !== expected) {
+    throw new Error(
+      `Período ${startYear}-${endYear} com ${selected.length} itens, esperava ${expected}.`,
+    );
+  }
+
+  return selected;
+}
+
+// Inclinação da reta de tendência por mínimos quadrados: a reta que passa
+// mais perto de todos os pontos. O resultado vem em °C por ano e é
+// multiplicado por 10 para virar °C por década, que é mais fácil de ler.
+function trendPerDecade(points: { x: number; y: number }[]): number {
+  const meanX = points.reduce((sum, point) => sum + point.x, 0) / points.length;
+  const meanY = points.reduce((sum, point) => sum + point.y, 0) / points.length;
+
+  let numerator = 0;
+  let denominator = 0;
+  for (const { x, y } of points) {
+    numerator += (x - meanX) * (y - meanY);
+    denominator += (x - meanX) ** 2;
+  }
+
+  return roundTo((numerator / denominator) * 10, 3);
+}
+
+// Compara a base de 1961 a 1990 com os últimos anos e verões completos.
+// Anos e verões têm janelas próprias: o verão de 2026 já terminou em
+// fevereiro, então os verões recentes ficam um ano à frente dos anos.
+function buildComparison(years: YearSummary[], summers: SummerSummary[]) {
+  const lastYear = years.at(-1)!.year;
+  const lastSummer = summers.at(-1)!.summer;
+  const recentYears = { startYear: lastYear - recentLength + 1, endYear: lastYear };
+  const recentSummers = {
+    startYear: lastSummer - recentLength + 1,
+    endYear: lastSummer,
+  };
+
+  return {
+    baseline: {
+      ...baseline,
+      years: averageSummaries(
+        pickPeriod(years, (item) => item.year, baseline.startYear, baseline.endYear),
+      ),
+      summers: averageSummaries(
+        pickPeriod(summers, (item) => item.summer, baseline.startYear, baseline.endYear),
+      ),
+    },
+    recent: {
+      years: {
+        ...recentYears,
+        ...averageSummaries(
+          pickPeriod(years, (item) => item.year, recentYears.startYear, recentYears.endYear),
+        ),
+      },
+      summers: {
+        ...recentSummers,
+        ...averageSummaries(
+          pickPeriod(
+            summers,
+            (item) => item.summer,
+            recentSummers.startYear,
+            recentSummers.endYear,
+          ),
+        ),
+      },
+    },
+    trend: {
+      meanTempPerDecade: trendPerDecade(
+        years.map((item) => ({ x: item.year, y: item.meanTemp })),
+      ),
+    },
+  };
+}
+
+// Médias por década, usadas no gráfico dos extremos. A década em andamento
+// entra com `complete: false` e o número de anos que já tem, para a página
+// mostrar o aviso de "década em andamento".
+function buildDecades(years: YearSummary[]) {
+  const yearsByDecade = Map.groupBy(years, (item) => Math.floor(item.year / 10) * 10);
+
+  return [...yearsByDecade].map(([decade, items]) => ({
+    decade,
+    yearCount: items.length,
+    complete: items.length === 10,
+    ...averageSummaries(items),
+  }));
+}
+
 async function main() {
   const endDate = getEndDate();
   console.log(`Buscando dados de ${startDate} até ${endDate}...`);
@@ -189,6 +323,8 @@ async function main() {
   const records = toDailyRecords(response.daily);
   const years = buildYears(records);
   const summers = buildSummers(records);
+  const comparison = buildComparison(years, summers);
+  const decades = buildDecades(years);
 
   const data = {
     meta: {
@@ -205,12 +341,14 @@ async function main() {
       },
       startDate,
       endDate,
-      updatedAt: new Date().toISOString().slice(0, 10),
+      updatedAt: getTodayInPortoAlegre(),
       thresholds,
       summerMonths: [12, 1, 2],
     },
+    comparison,
     years,
     summers,
+    decades,
   };
 
   // `recursive: true` cria a pasta src/data se ela ainda não existir.

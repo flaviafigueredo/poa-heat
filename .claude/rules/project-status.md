@@ -24,14 +24,13 @@
 
 ## Próximos passos
 
-1. Calcular no script os números de comparação (médias da base de 1961 a 1990 e dos últimos 10 anos completos) e salvar no JSON. A história já está definida (`analysis-care.md` e `chapters.md`) e a biblioteca escolhida: D3 com React (`stack-and-architecture.md`).
-2. Construir os capítulos 1 a 4 (número em destaque, gráfico e interações).
-3. Construir o painel final, com a luz no hover.
-4. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
-5. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
+1. Construir os capítulos 1 a 4 (número em destaque, gráfico e interações). A história está em `analysis-care.md` e `chapters.md`, a biblioteca é D3 com React (`stack-and-architecture.md`) e o JSON já traz `comparison` (base de 1961 a 1990, últimos 10 anos e verões completos, tendência por década) e `decades` (médias por década, com `complete: false` na década em andamento).
+2. Construir o painel final, com a luz no hover.
+3. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
+4. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
 
 ## Pendências pequenas
 
-- `npm audit` aponta 5 vulnerabilidades altas, todas no `braces` dentro do `eslint-config-next` (só lint, não vai para o site, sem versão corrigida). Aceito por enquanto; nunca rodar `npm audit fix --force`, que instalaria a config do Next 14.
+- `npm audit` zerado em 16/11/2026 (Next e `eslint-config-next` 16.4.6, mais `npm audit fix`). Nunca rodar `npm audit fix --force`, que pode instalar versões antigas do `eslint-config-next`.
 - Textos "Mais de 75 anos" e "de 1950 até hoje" na abertura (`Opening.tsx`) e na descrição da página (`layout.tsx`) ainda estão escritos à mão. Devem passar a vir do JSON (`meta.startDate`).
 - A seção de fontes precisa citar a NASA pelas imagens da Terra.

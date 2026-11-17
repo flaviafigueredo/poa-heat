@@ -235,10 +235,12 @@ function pickPeriod<T>(
   return selected;
 }
 
-// Inclinação da reta de tendência por mínimos quadrados: a reta que passa
-// mais perto de todos os pontos. O resultado vem em °C por ano e é
-// multiplicado por 10 para virar °C por década, que é mais fácil de ler.
-function trendPerDecade(points: { x: number; y: number }[]): number {
+// Reta de tendência por mínimos quadrados: a reta que passa mais perto de
+// todos os pontos. Devolve a inclinação em °C por década (a inclinação sai
+// em °C por ano e é multiplicada por 10, que é mais fácil de ler) e o valor
+// da reta no primeiro e no último ano, que é o que o gráfico precisa para
+// desenhá-la.
+function buildTrend(points: { x: number; y: number }[]) {
   const meanX = points.reduce((sum, point) => sum + point.x, 0) / points.length;
   const meanY = points.reduce((sum, point) => sum + point.y, 0) / points.length;
 
@@ -249,7 +251,22 @@ function trendPerDecade(points: { x: number; y: number }[]): number {
     denominator += (x - meanX) ** 2;
   }
 
-  return roundTo((numerator / denominator) * 10, 3);
+  // A reta de mínimos quadrados sempre passa pelo ponto médio (meanX, meanY).
+  // Com a inclinação e esse ponto, dá para calcular a reta em qualquer ano.
+  const slope = numerator / denominator;
+  const valueAt = (x: number) => roundTo(meanY + slope * (x - meanX), 2);
+  const startYear = points[0].x;
+  const endYear = points.at(-1)!.x;
+
+  return {
+    perDecade: roundTo(slope * 10, 3),
+    line: {
+      startYear,
+      startValue: valueAt(startYear),
+      endYear,
+      endValue: valueAt(endYear),
+    },
+  };
 }
 
 // Compara a base de 1961 a 1990 com os últimos anos e verões completos.
@@ -294,9 +311,7 @@ function buildComparison(years: YearSummary[], summers: SummerSummary[]) {
       },
     },
     trend: {
-      meanTempPerDecade: trendPerDecade(
-        years.map((item) => ({ x: item.year, y: item.meanTemp })),
-      ),
+      meanTemp: buildTrend(years.map((item) => ({ x: item.year, y: item.meanTemp }))),
     },
   };
 }

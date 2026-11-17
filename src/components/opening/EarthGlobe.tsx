@@ -27,13 +27,19 @@ function getEndView(isWide: boolean) {
 
 // `globeOffset` desloca o globo na tela, em pixels, sem mexer na câmera.
 // Tela larga: globo para a direita, deixando o espaço da esquerda para o texto.
+// A abertura tem uma faixa extra embaixo (ver Opening.module.css), então o
+// globo também sobe metade dessa faixa: assim o centro dele continua no meio
+// da primeira tela, e a faixa recebe só a parte de baixo da Terra.
 // Celular: globo para cima, deixando a parte de baixo para o texto.
 function getGlobeOffset(
   width: number,
   height: number,
   isWide: boolean,
 ): [number, number] {
-  return isWide ? [Math.round(width * 0.2), 0] : [0, Math.round(height * -0.17)];
+  if (!isWide) return [0, Math.round(height * -0.17)];
+
+  const extraHeight = Math.max(0, height - window.innerHeight);
+  return [Math.round(width * 0.2), Math.round(extraHeight / -2)];
 }
 
 // Lê uma variável CSS definida em `globals.css`. Assim cores e o tipo de

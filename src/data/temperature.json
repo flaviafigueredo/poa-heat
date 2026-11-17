@@ -63,7 +63,15 @@
       }
     },
     "trend": {
-      "meanTempPerDecade": 0.082
+      "meanTemp": {
+        "perDecade": 0.082,
+        "line": {
+          "startYear": 1950,
+          "startValue": 19.06,
+          "endYear": 2025,
+          "endValue": 19.68
+        }
+      }
     }
   },
   "years": [

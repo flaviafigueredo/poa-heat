@@ -1,0 +1,27 @@
+/* 900px é o mesmo breakpoint de globals.css: ao mudar, mudar nos dois.
+   1800px é onde a coluna do gráfico dos capítulos passa de cerca de 1100px,
+   largura em que a versão extralarga fica no tamanho certo. */
+.wide,
+.extraWide {
+  display: none;
+}
+
+@media (min-width: 900px) and (max-width: 1799.98px) {
+  .narrow {
+    display: none;
+  }
+
+  .wide {
+    display: block;
+  }
+}
+
+@media (min-width: 1800px) {
+  .narrow {
+    display: none;
+  }
+
+  .extraWide {
+    display: block;
+  }
+}

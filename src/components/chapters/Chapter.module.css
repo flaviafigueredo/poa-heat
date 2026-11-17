@@ -1,0 +1,61 @@
+.chapter {
+  padding: 6rem var(--page-gutter);
+}
+
+/* Telas estreitas e médias: uma coluna só, no centro, com o gráfico depois
+   do texto. */
+.inner {
+  max-width: 45rem;
+  margin-inline: auto;
+}
+
+.kicker {
+  margin: 0 0 0.75rem;
+  color: var(--color-hot);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* Telas largas: o capítulo ocupa a mesma largura da abertura, com as mesmas
+   margens dos dois lados (--page-gutter), em qualquer tamanho de tela.
+   Texto à esquerda, numa coluna que cresce só até uma largura confortável
+   de ler (de 26rem a 32rem, cerca de 50 a 60 letras por linha), e gráfico à
+   direita, ocupando todo o resto.
+   O gráfico fica preso na tela (`sticky`) enquanto a pessoa lê o texto ao
+   lado, então as duas colunas se equilibram mesmo com textos de tamanhos
+   diferentes. A partir de 1280px a coluna do gráfico tem pelo menos 700px,
+   perto do tamanho em que o layout largo do gráfico foi desenhado (ver
+   ResponsiveChart). Abaixo disso, os rótulos encolheriam demais. */
+@media (min-width: 1280px) {
+  .inner {
+    display: grid;
+    grid-template-columns: minmax(26rem, 32rem) minmax(0, 1fr);
+    /* O espaço entre as colunas cresce um pouco com a tela (5% da largura),
+       entre 4rem e 8rem. */
+    column-gap: clamp(4rem, 5vw, 8rem);
+    max-width: none;
+  }
+
+  .figureColumn {
+    position: sticky;
+    top: 4rem;
+    align-self: start;
+  }
+
+  /* Com a tabela aberta, o gráfico pode ficar mais alto que a tela. Preso,
+     a parte de baixo nunca apareceria; então ele volta a rolar normalmente. */
+  .figureColumn:has(details[open]) {
+    position: static;
+  }
+}

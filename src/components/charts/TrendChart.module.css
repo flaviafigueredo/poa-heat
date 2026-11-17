@@ -1,0 +1,117 @@
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.grid {
+  stroke: var(--color-grid);
+  stroke-width: 1;
+}
+
+.axisLabel {
+  fill: var(--color-text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.baselineBand {
+  fill: var(--color-text);
+  opacity: 0.04;
+}
+
+.bandLabel {
+  fill: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.baselineLine {
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.areaStopTop {
+  stop-color: var(--temp-hot-2);
+  stop-opacity: 0.18;
+}
+
+.areaStopBottom {
+  stop-color: var(--temp-hot-2);
+  stop-opacity: 0;
+}
+
+.line {
+  fill: none;
+  stroke: var(--temp-neutral);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  /* Traço do tamanho da linha inteira (comprimento 1, ver pathLength no
+     componente). Deslocar o traço em 1 esconde a linha; voltar a 0 desenha. */
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* O anel na cor do fundo separa cada ponto da linha que passa por ele. */
+.dot {
+  stroke: var(--color-background);
+  stroke-width: 1.5;
+}
+
+.trend {
+  stroke: var(--color-text);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* Contorno na cor do fundo atrás das letras: o texto fica legível mesmo
+   quando passa por cima de uma linha ou de um ponto. */
+.annotation {
+  fill: var(--color-text);
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--color-background);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+/* Animação de entrada, controlada pelo atributo data-reveal do Reveal.
+   "hidden": tudo escondido, esperando o gráfico entrar na tela.
+   "visible": a linha se desenha da esquerda para a direita, percorrendo os
+   anos; cada ponto aparece quando a linha chega nele; depois surgem a área,
+   a tendência e a anotação.
+   Sem JavaScript ou com animações desativadas, o atributo fica "static" e
+   nada disso se aplica: o gráfico aparece pronto. */
+[data-reveal="hidden"] .line {
+  stroke-dashoffset: 1;
+}
+
+[data-reveal="hidden"] .dot,
+[data-reveal="hidden"] .area,
+[data-reveal="hidden"] .trend,
+[data-reveal="hidden"] .annotation {
+  opacity: 0;
+}
+
+/* Ritmo constante (linear), para os pontos, que aparecem em intervalos
+   iguais, acompanharem a ponta da linha. */
+[data-reveal="visible"] .line {
+  transition: stroke-dashoffset 2s linear;
+}
+
+[data-reveal="visible"] .dot {
+  transition: opacity 0.3s ease-out;
+  transition-delay: calc(var(--progress) * 2s);
+}
+
+[data-reveal="visible"] .area {
+  transition: opacity 1s ease-out 1.2s;
+}
+
+[data-reveal="visible"] .trend,
+[data-reveal="visible"] .annotation {
+  transition: opacity 0.6s ease-out 2s;
+}

@@ -2,6 +2,8 @@
 
 Cada capítulo de gráfico (1 a 4) abre com um número em destaque vindo do JSON (ver "Capítulos 1 a 4" em `design.md`).
 
+Layout (decisão de 16/11/2026): a partir de 1280px, o capítulo usa a mesma largura da abertura, com as mesmas margens (`--page-gutter`) dos dois lados, em qualquer tamanho de tela. Texto à esquerda (coluna de 26rem a 32rem) e gráfico à direita ocupando o resto, preso na tela (`sticky`) enquanto se lê. Abaixo de 1280px, uma coluna só, centralizada. Os gráficos têm três versões (`ResponsiveChart`): celular (até 899px), larga (900px a 1799px) e extralarga, mais achatada (a partir de 1800px). O texto não contorna o gráfico, porque as linhas embaixo dele ficariam longas demais para ler. Tudo isso já está no componente `Chapter`.
+
 Comparação comum a todos os capítulos (decisão de 16/11/2026): os últimos 10 anos completos contra a base de 1961 a 1990 (ver `analysis-care.md`). A janela anda sozinha quando o workflow traz um ano novo. Não comparar década com década no número em destaque, porque a década atual está incompleta.
 
 Os valores entre parênteses são dos dados de 12/11/2026 (2016 a 2025) e servem só de referência: na página, tudo vem do JSON.

@@ -1,0 +1,22 @@
+.highlight {
+  display: grid;
+  gap: 0.5rem;
+  margin: 2.5rem 0 0;
+}
+
+/* Mesma fonte sem serifa do resto do texto: em número grande, a serifa
+   pareceria enfeite. Algarismos proporcionais (o padrão), porque os de
+   largura fixa deixam números grandes com espaços estranhos. */
+.value {
+  font-size: clamp(3.5rem, 12vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.caption {
+  max-width: 24rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.4;
+}

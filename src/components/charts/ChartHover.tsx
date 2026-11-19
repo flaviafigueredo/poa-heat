@@ -7,8 +7,10 @@ import styles from "./ChartHover.module.css";
 // já formatados: aqui só se escolhe qual ponto mostrar.
 export type HoverPoint = {
   x: number;
-  y: number;
-  color: string;
+  // Posição e cor da bolinha no ponto ativo. Gráficos de barras não passam
+  // esses dois: a linha guia já marca a barra.
+  y?: number;
+  color?: string;
   title: string;
   rows: { label: string; value: string }[];
 };
@@ -93,13 +95,15 @@ export function ChartHover({
               y1={plotTop}
               y2={plotBottom}
             />
-            <circle
-              className={styles.activeDot}
-              cx={active.x}
-              cy={active.y}
-              r={6}
-              fill={active.color}
-            />
+            {active.y !== undefined && (
+              <circle
+                className={styles.activeDot}
+                cx={active.x}
+                cy={active.y}
+                r={6}
+                fill={active.color}
+              />
+            )}
           </g>
         )}
 

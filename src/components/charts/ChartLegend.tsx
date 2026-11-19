@@ -1,10 +1,12 @@
 import styles from "./ChartLegend.module.css";
 
 // Cada item da legenda tem uma marca no mesmo formato da marca do gráfico:
-// ponto para pontos, traço para linhas.
+// ponto para pontos, traço para linhas, retângulo para barras. A barra
+// tracejada marca um dado parcial, como a década em andamento.
 export type LegendItem =
   | { kind: "dot"; color: string; label: string }
-  | { kind: "line"; color: string; label: string; dashed?: boolean };
+  | { kind: "line"; color: string; label: string; dashed?: boolean }
+  | { kind: "bar"; color: string; label: string; dashed?: boolean };
 
 // Legenda acima do gráfico. O texto fica sempre na cor de texto; só a marca
 // ao lado leva a cor do dado.
@@ -14,9 +16,21 @@ export function ChartLegend({ items }: { items: LegendItem[] }) {
       {items.map((item) => (
         <li key={item.label} className={styles.item}>
           <svg className={styles.key} viewBox="0 0 16 10" aria-hidden="true">
-            {item.kind === "dot" ? (
-              <circle cx={8} cy={5} r={4} fill={item.color} />
-            ) : (
+            {item.kind === "dot" && <circle cx={8} cy={5} r={4} fill={item.color} />}
+            {item.kind === "bar" && (
+              <rect
+                x={4}
+                y={1}
+                width={8}
+                height={8}
+                rx={1}
+                fill={item.color}
+                fillOpacity={item.dashed ? 0.25 : 1}
+                stroke={item.dashed ? item.color : undefined}
+                strokeDasharray={item.dashed ? "2 1.5" : undefined}
+              />
+            )}
+            {item.kind === "line" && (
               <line
                 x1={1}
                 x2={15}

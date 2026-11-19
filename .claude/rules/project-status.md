@@ -31,9 +31,15 @@
   - Layout do capítulo e as três versões dos gráficos: ver `chapters.md`.
   - Testado com prints e hover automatizados no Edge (celular, 1100, 1280, 1440, 1800 e 2541px). Para isso, foi criada e apagada uma rota temporária `src/app/preview-chapter`.
 
+- Capítulo 2 (os extremos) feito em 19/11/2026, esperando aprovação da Flávia: `ExtremesChapter` e `ExtremesChart`.
+  - Dois painéis de barras por década empilhados (acima de 30 °C e acima de 35 °C), cada um com a própria escala, porque no mesmo eixo as barras de 35 °C ficariam achatadas.
+  - Década em andamento com barra tracejada, aviso embaixo e na legenda. Barras crescem uma por vez, da década mais antiga para a mais recente.
+  - `ChartHover` aceita ponto sem bolinha (`y` opcional, para barras) e `ChartLegend` ganhou a marca `bar`.
+  - Teste de celular com o Edge sem janela: ele não desce de 492px de largura, então o celular foi simulado com a página dentro de um iframe de 390px.
+
 ## Próximos passos
 
-1. Construir os capítulos 2 a 4 com as peças do capítulo 1. Capítulo 2 usa `decades` (barras por década, com aviso na década em andamento); capítulo 4 usa `comparison.*.summers`.
+1. Construir os capítulos 3 e 4 com as peças dos capítulos 1 e 2. Capítulo 4 usa `comparison.*.summers`.
 2. Construir o painel final, com a luz no hover.
 3. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
 4. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.

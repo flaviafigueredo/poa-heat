@@ -1,0 +1,87 @@
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.grid {
+  stroke: var(--color-grid);
+  stroke-width: 1;
+}
+
+.axisLabel {
+  fill: var(--color-text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.baselineLine {
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+/* Pontos dos anos em cinza: eles mostram a variação, e quem conta a
+   história são os degraus. */
+.dot {
+  fill: var(--temp-neutral);
+}
+
+.stepHalo {
+  fill: none;
+  stroke: var(--color-background);
+  stroke-width: 6;
+  stroke-linejoin: round;
+}
+
+.step {
+  fill: none;
+  stroke: var(--temp-hot-2);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* Década em andamento: degrau tracejado, porque o número ainda pode mudar. */
+.stepPartial {
+  stroke-dasharray: 5 4;
+}
+
+/* Contorno na cor do fundo atrás das letras, para o texto ficar legível
+   por cima dos pontos. */
+.annotation {
+  fill: var(--color-text);
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--color-background);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+/* Animação de entrada, controlada pelo atributo data-reveal do Reveal.
+   "visible": os pontos aparecem em ordem, percorrendo os anos, e depois
+   surgem os degraus das décadas e a anotação do salto.
+   Sem JavaScript ou com animações desativadas, o atributo fica "static" e
+   o gráfico aparece pronto. */
+[data-reveal="hidden"] .dot,
+[data-reveal="hidden"] .step,
+[data-reveal="hidden"] .stepHalo,
+[data-reveal="hidden"] .annotation {
+  opacity: 0;
+}
+
+[data-reveal="visible"] .dot {
+  transition: opacity 0.3s ease-out;
+  transition-delay: calc(var(--progress) * 1.6s);
+}
+
+[data-reveal="visible"] .step,
+[data-reveal="visible"] .stepHalo {
+  transition: opacity 0.6s ease-out 1.6s;
+}
+
+[data-reveal="visible"] .annotation {
+  transition: opacity 0.6s ease-out 2.1s;
+}

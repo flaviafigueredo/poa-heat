@@ -1,0 +1,67 @@
+.field {
+  display: grid;
+  gap: 0.375rem;
+  max-width: 10rem;
+}
+
+.fieldLabel {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+/* Campo de escolha com a cara do painel: fundo da página, borda apagada e
+   cantos de 4px. A seta é a do próprio navegador, que já segue o tema
+   escuro (color-scheme em globals.css). */
+.select {
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-background);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--temp-hot-2);
+  outline-offset: 2px;
+}
+
+.table {
+  width: 100%;
+  margin-top: 1.25rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table th,
+.table td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-grid);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.table th[scope="row"] {
+  padding-right: 1rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  text-align: left;
+}
+
+.table thead th {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.table td {
+  min-width: 4.5rem;
+  font-weight: 600;
+}
+
+.summary {
+  margin: 1rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}

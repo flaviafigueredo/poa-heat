@@ -2,6 +2,7 @@ import { ExtremesChapter } from "@/components/chapters/ExtremesChapter";
 import { NightsChapter } from "@/components/chapters/NightsChapter";
 import { SummerChapter } from "@/components/chapters/SummerChapter";
 import { TrendChapter } from "@/components/chapters/TrendChapter";
+import { Dashboard } from "@/components/dashboard/Dashboard";
 import { Opening } from "@/components/opening/Opening";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <ExtremesChapter />
       <NightsChapter />
       <SummerChapter />
+      <Dashboard />
     </main>
   );
 }

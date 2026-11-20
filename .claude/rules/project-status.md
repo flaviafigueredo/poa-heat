@@ -47,11 +47,17 @@
   - Sem linha guia nem balão, porque não há eixo de anos: os números estão nos rótulos.
   - A frase principal vem do JSON e fala como no dia a dia ("5 ou 6 dias", não "5,9").
 
+- Painel final ("Explore os dados") aprovado em 19/11/2026, em `src/components/dashboard/`.
+  - Grade bento: a partir de 1280px, três colunas (Listras e Recordes em cima, O teu ano e Verão a verão embaixo); de 900px a 1279px, duas colunas; no celular, uma.
+  - Luz que segue o cursor: `GlowGrid` passa a posição do ponteiro para cada painel (`--glow-x`, `--glow-y`), e o CSS desenha a borda acesa (máscara com `exclude`) e o brilho fraco por dentro. No toque, a luz fica onde o dedo tocou.
+  - Painéis: `StripesChart` e `SummersChart` (em `charts/`, com `ChartHover`), `Records` (empates mostram todos os anos) e `YearComparison` (única parte no navegador, começa em 1990).
+  - `temperatureColor.ts` exporta os limites e as cores, para a régua das Listras.
+  - No teste com o Edge sem janela, as transições não avançam no relógio virtual. Para ver a luz no print, rodar com `--force-prefers-reduced-motion`.
+
 ## Próximos passos
 
-1. Construir o painel final, com a luz no hover.
-2. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
-3. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
+1. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
+2. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
 
 ## Pendências pequenas
 

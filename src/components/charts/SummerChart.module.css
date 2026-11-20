@@ -1,0 +1,41 @@
+.chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.label {
+  fill: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.labelValue {
+  fill: var(--color-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Dia comum do verão: um quadradinho apagado, só para dar a escala dos 90
+   dias. */
+.day {
+  fill: var(--color-grid);
+}
+
+/* Dia acima de 35 °C, na mesma cor do capítulo 2. */
+.hotDay {
+  fill: var(--temp-hot-3);
+}
+
+/* Animação de entrada, controlada pelo atributo data-reveal do Reveal.
+   "visible": os dias acima de 35 °C acendem um de cada vez, contando os
+   dias reais de cada período. Sem JavaScript ou com animações desativadas,
+   o atributo fica "static" e o gráfico aparece pronto. */
+[data-reveal="hidden"] .hotDay {
+  opacity: 0;
+}
+
+[data-reveal="visible"] .hotDay {
+  transition: opacity 0.25s ease-out;
+  transition-delay: calc(0.3s + var(--index) * 0.25s);
+}

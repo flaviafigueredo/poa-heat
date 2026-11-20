@@ -42,12 +42,16 @@
   - O maior salto entre décadas completas é calculado (`biggestJump`) e anotado no gráfico.
   - Aviso no texto de que o salto coincide com a era dos satélites na reanálise (ver `analysis-care.md`).
 
+- Capítulo 4 (o teu verão vs o dos teus pais) aprovado em 19/11/2026: `SummerChapter` e `SummerChart`.
+  - Gráfico de quadradinhos: 90 por verão, um por dia, em duas grades (últimos 10 verões e 1961 a 1990). Os dias acima de 35 °C acendem um por um, e o último fica preenchido só pela fração da média, sem arredondar.
+  - Sem linha guia nem balão, porque não há eixo de anos: os números estão nos rótulos.
+  - A frase principal vem do JSON e fala como no dia a dia ("5 ou 6 dias", não "5,9").
+
 ## Próximos passos
 
-1. Construir o capítulo 4 com as peças dos capítulos 1 a 3. Usa `comparison.*.summers`.
-2. Construir o painel final, com a luz no hover.
-3. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
-4. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
+1. Construir o painel final, com a luz no hover.
+2. Capítulo 5 (metodologia), footer e os textos da abertura vindo do JSON.
+3. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
 
 ## Pendências pequenas
 

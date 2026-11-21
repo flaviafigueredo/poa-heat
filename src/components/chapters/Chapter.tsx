@@ -21,7 +21,13 @@ export function Chapter({ kicker, title, highlight, figure, children }: ChapterP
   const titleId = useId();
 
   return (
-    <section className={styles.chapter} aria-labelledby={titleId}>
+    // `data-progress-label` marca a seção para o indicador de progresso
+    // (ver ProgressIndicator), com o nome que ele mostra.
+    <section
+      className={styles.chapter}
+      aria-labelledby={titleId}
+      data-progress-label={kicker}
+    >
       <div className={styles.inner}>
         <div className={styles.textColumn}>
           <p className={styles.kicker}>{kicker}</p>

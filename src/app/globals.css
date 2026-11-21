@@ -51,9 +51,8 @@
   --page-gutter: 1.25rem;
 
   /* Tipo de layout atual, lido pelo EarthGlobe para posicionar o globo.
-     Media queries não aceitam variáveis, então a largura 900px aparece aqui,
-     em Opening.module.css e em ResponsiveChart.module.css. Ao mudar, mudar
-     nos três. */
+     Media queries não aceitam variáveis, então a largura 900px aparece aqui
+     e em Opening.module.css. Ao mudar, mudar nos dois. */
   --layout: narrow;
 }
 
@@ -71,6 +70,13 @@
 }
 
 html {
+  /* Tamanho base das letras. Até 1440px de largura, 16px (o padrão). Acima
+     disso, cresce 0,5px a cada 100px de tela (cerca de 21,5px em 2536px).
+     Como textos, colunas, espaços e rótulos dos gráficos são medidos em
+     `rem`, a página inteira cresce junto, de cima a baixo, em vez de só os
+     gráficos esticarem. */
+  font-size: max(16px, calc(16px + (100vw - 1440px) * 0.005));
+
   /* Avisa o navegador que a página é escura: barras de rolagem e campos de
      formulário nativos também ficam escuros. */
   color-scheme: dark;

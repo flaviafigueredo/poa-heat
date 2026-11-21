@@ -2,8 +2,12 @@
   margin-top: 1rem;
 }
 
+/* Espaço em cima e embaixo para a área de toque chegar a cerca de 44px, o
+   tamanho recomendado para o dedo. Sem mudar o `display`, para a setinha
+   do navegador continuar aparecendo. */
 .summary {
   width: fit-content;
+  padding-block: 0.75rem;
   color: var(--color-text-muted);
   font-size: 0.875rem;
   cursor: pointer;

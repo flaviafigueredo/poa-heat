@@ -1,12 +1,18 @@
-/* 900px é o mesmo breakpoint de globals.css: ao mudar, mudar nos dois.
-   1800px é onde a coluna do gráfico dos capítulos passa de cerca de 1100px,
-   largura em que a versão extralarga fica no tamanho certo. */
+/* Qual versão do gráfico aparece em cada largura de tela. A escolha segue
+   a largura que o gráfico ocupa de fato, para os rótulos ficarem sempre
+   perto do tamanho do texto:
+   - até 639px, celular;
+   - de 640px a 1099px, larga (uma coluna só, gráfico de 600px a 1000px);
+   - de 1100px a 1279px, extralarga (uma coluna só, gráfico com mais de
+     1000px);
+   - de 1280px a 1799px, larga (texto ao lado, gráfico de 600px a 1100px);
+   - a partir de 1800px, extralarga. */
 .wide,
 .extraWide {
   display: none;
 }
 
-@media (min-width: 900px) and (max-width: 1799.98px) {
+@media (min-width: 640px) and (max-width: 1099.98px), (min-width: 1280px) and (max-width: 1799.98px) {
   .narrow {
     display: none;
   }
@@ -16,7 +22,7 @@
   }
 }
 
-@media (min-width: 1800px) {
+@media (min-width: 1100px) and (max-width: 1279.98px), (min-width: 1800px) {
   .narrow {
     display: none;
   }

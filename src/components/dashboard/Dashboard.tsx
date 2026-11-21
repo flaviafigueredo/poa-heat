@@ -29,7 +29,11 @@ export function Dashboard() {
   const titleId = useId();
 
   return (
-    <section className={styles.section} aria-labelledby={titleId}>
+    <section
+      className={styles.section}
+      aria-labelledby={titleId}
+      data-progress-label="Explore os dados"
+    >
       <header className={styles.header}>
         <h2 id={titleId} className={styles.title}>
           Explore os dados

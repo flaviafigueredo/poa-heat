@@ -2,20 +2,33 @@
   padding: 6rem var(--page-gutter);
 }
 
-/* Telas estreitas e médias: uma coluna só, no centro, com o gráfico depois
-   do texto. */
+/* Celular: uma coluna só, no centro, com o gráfico depois do texto. */
 .inner {
   max-width: 45rem;
   margin-inline: auto;
 }
 
+/* A partir de 900px, o capítulo vai de margem a margem, como o painel e o
+   footer: todas as seções têm sempre a mesma largura. Até 1279px continua
+   uma coluna só; o texto fica limitado a uma largura boa de ler (ver
+   Prose) e o gráfico ocupa a largura toda. */
+@media (min-width: 900px) {
+  .inner {
+    max-width: none;
+  }
+}
+
+/* Número e tema do capítulo, como a abertura de capítulo de um livro: uma
+   linha fina em cima e o texto em serifa itálica, discreto, em caixa
+   normal. */
 .kicker {
-  margin: 0 0 0.75rem;
-  color: var(--color-hot);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  margin: 0 0 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-style: italic;
 }
 
 .title {
@@ -29,18 +42,19 @@
 
 /* Telas largas: o capítulo ocupa a mesma largura da abertura, com as mesmas
    margens dos dois lados (--page-gutter), em qualquer tamanho de tela.
-   Texto à esquerda, numa coluna que cresce só até uma largura confortável
-   de ler (de 26rem a 32rem, cerca de 50 a 60 letras por linha), e gráfico à
-   direita, ocupando todo o resto.
+   Texto à esquerda, numa coluna de até 40% da largura (no mínimo 26rem), e
+   gráfico à direita, ocupando o resto. Assim texto e gráfico se equilibram
+   em qualquer tela; o texto em si para em 44rem, cerca de 75 letras por
+   linha (ver Prose).
    O gráfico fica preso na tela (`sticky`) enquanto a pessoa lê o texto ao
    lado, então as duas colunas se equilibram mesmo com textos de tamanhos
-   diferentes. A partir de 1280px a coluna do gráfico tem pelo menos 700px,
-   perto do tamanho em que o layout largo do gráfico foi desenhado (ver
+   diferentes. Em 1280px a coluna do gráfico tem cerca de 650px, perto do
+   tamanho em que o layout largo do gráfico foi desenhado (ver
    ResponsiveChart). Abaixo disso, os rótulos encolheriam demais. */
 @media (min-width: 1280px) {
   .inner {
     display: grid;
-    grid-template-columns: minmax(26rem, 32rem) minmax(0, 1fr);
+    grid-template-columns: minmax(26rem, 40%) minmax(0, 1fr);
     /* O espaço entre as colunas cresce um pouco com a tela (5% da largura),
        entre 4rem e 8rem. */
     column-gap: clamp(4rem, 5vw, 8rem);

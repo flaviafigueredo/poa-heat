@@ -54,10 +54,10 @@
   - `temperatureColor.ts` exporta os limites e as cores, para a régua das Listras.
   - No teste com o Edge sem janela, as transições não avançam no relógio virtual. Para ver a luz no print, rodar com `--force-prefers-reduced-motion`.
 
-- Capítulo 5 ("Como os dados foram feitos") com conteúdo aprovado em 21/11/2026 (o layout ainda vai ser revisto): `MethodologyChapter`, no fim do `<main>`, depois do painel.
+- Capítulo 5 ("Como os dados foram feitos") com conteúdo aprovado em 21/11/2026: `MethodologyChapter`, no fim do `<main>`, depois do painel.
   - Blocos: de onde vêm os números (fonte, licença, modelo, ponto da grade, período e atualização, tudo do JSON), o que é reanálise, como as contas foram feitas, por que comparar com 1961 a 1990 (com a diferença calculada para a referência da OMM, 1991 a 2020), limites da análise (inclusive o salto de 1979) e créditos das imagens da NASA e do código.
   - `format.ts` ganhou `formatDate` ("1º de janeiro de 1950").
-  - Layout de jornal (pedido da Flávia): de 1280px a 1799px, a abertura (fonte e reanálise) fica ao lado do mapa, e o resto do texto se divide em duas colunas embaixo, com a da direita sob o mapa. A partir de 1800px, três colunas em cima (abertura, mapa, contas) e limites e créditos em três colunas de jornal embaixo. A coluna do mapa tem a largura exata do mapa (limitada pela altura da tela), e a sobra fica entre as colunas. No celular, o mapa vem logo depois de "O que é reanálise".
+  - Layout (revisão do design, 21/11/2026): a partir de 1280px, duas colunas com as medidas dos outros capítulos. Em cima, a abertura (fonte e reanálise) ao lado do mapa. Embaixo, os outros quatro blocos em pares, lidos linha a linha, cada um completo e com uma linha fina em cima (como um FAQ). O texto nunca continua de uma coluna para a outra. No celular, o mapa vem logo depois de "O que é reanálise".
   - Mapa (`GridMap`): Porto Alegre e cidades vizinhas, o Guaíba, a grade de 0,1 grau do ERA5-Land, o quadrado de onde vêm os números e o ponto pedido. Escolhido pela Flávia em 21/11/2026.
   - Contornos da malha municipal do IBGE, gerados por `scripts/build-map.ts` (`npm run map`) em `src/data/portoAlegreMap.json` (14,5 KB, recortados e simplificados). A malha não tem água: o Guaíba é o espaço entre as cidades. Não entra no workflow mensal.
   - Os nomes no mapa são HTML por cima do SVG, para o texto ter o mesmo tamanho em qualquer tela. O mapa sai uma vez só no HTML, sem `ResponsiveChart`.
@@ -66,12 +66,15 @@
 
 - Textos da abertura e descrição da página vindo do JSON, aprovados em 21/11/2026: `seriesLengthText` ("Mais de 76 anos", conta os anos completos e põe "Mais de" quando há meses do ano seguinte) e `seriesStartYear`, em `temperatureData.ts`.
 
+- Indicador de progresso (21/11/2026): `ProgressIndicator`. Na tela larga, um pontinho por seção na margem direita (botões que levam à seção, com o nome no hover ou foco); no celular, linha fina no topo. Só aparece depois da abertura. As seções são achadas pelo atributo `data-progress-label`.
+
+- Revisão do design concluída em 21/11/2026, na branch `feat/design-review`: página inteira cresce junto acima de 1440px, indicador de progresso, rótulo dos capítulos como abertura de capítulo de livro, larguras iguais em todas as seções em qualquer tela, versões dos gráficos escolhidas pela largura que ocupam, colunas de texto e gráfico equilibradas (texto até 40%) e capítulo 5 em blocos lidos linha a linha.
+
 ## Próximos passos
 
 Ordem combinada com a Flávia em 19/11/2026:
 
-1. Revisão do design.
-2. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
+1. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
 
 ## Pendências pequenas
 

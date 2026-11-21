@@ -135,7 +135,15 @@ export function TrendChart({ layout, width, height }: ChartSize) {
         {yTicks.map((tick) => (
           <g key={tick}>
             <line className={styles.grid} x1={plotLeft} x2={plotRight} y1={y(tick)} y2={y(tick)} />
-            <text className={styles.axisLabel} x={0} y={y(tick)} dy="0.32em">
+            {/* Número alinhado pela direita, logo antes do gráfico: mesmo com
+                as letras maiores das telas largas, ele nunca encosta nos dados. */}
+            <text
+              className={styles.axisLabel}
+              x={plotLeft - 8}
+              y={y(tick)}
+              dy="0.32em"
+              textAnchor="end"
+            >
               {formatTemperature(tick, { fractionDigits: Number.isInteger(tick) ? 0 : 1 })}
             </text>
           </g>

@@ -1,0 +1,138 @@
+/* Escondido na abertura, aparece com um esmaecer curto depois dela. */
+.bar,
+.dots {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease-out,
+    visibility 0.3s;
+}
+
+.bar[data-visible="true"],
+.dots[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Celular: linha de 2px no topo, que cresce da esquerda para a direita
+   (a largura vem do componente, em scaleX). */
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 2px;
+  background: var(--color-hot);
+  transform-origin: left;
+}
+
+/* Tela larga: coluna de pontinhos fixa na margem direita, no meio da
+   altura da tela. Fica dentro da margem (--page-gutter), sem cobrir texto
+   nem gráfico. */
+.dots {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .bar {
+    display: none;
+  }
+
+  .dots {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: calc(var(--page-gutter) / 2);
+    z-index: 10;
+    transform: translate(50%, -50%);
+  }
+}
+
+.list {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Área de clique de 24px (bom para o mouse), com o ponto de 6px no meio,
+   desenhado no ::before. */
+.dot {
+  position: relative;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.2s ease-out,
+    height 0.2s ease-out,
+    background-color 0.2s ease-out;
+}
+
+/* Seção atual: ponto maior, na cor de destaque. O tamanho também muda, para
+   a cor não carregar a informação sozinha. */
+.dot[aria-current="true"]::before {
+  width: 0.625rem;
+  height: 0.625rem;
+  background: var(--color-hot);
+}
+
+.dot:hover::before {
+  background: var(--color-text);
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--color-hot);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Nome da seção, à esquerda do ponto. Invisível até o mouse ou o foco do
+   teclado chegar no botão, mas sempre lido pelo leitor de tela. */
+.label {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 0.5rem);
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-out;
+}
+
+.dot:hover .label,
+.dot:focus-visible .label {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar,
+  .dots,
+  .dot::before,
+  .label {
+    transition: none;
+  }
+}

@@ -35,7 +35,7 @@
        ficar vazia à direita. */
     --map-width: calc((100svh - 6rem) * var(--map-aspect));
 
-    grid-template-columns: minmax(26rem, 32rem) minmax(0, var(--map-width));
+    grid-template-columns: minmax(26rem, 40%) minmax(0, var(--map-width));
     grid-template-areas:
       "intro map"
       "left right";
@@ -67,7 +67,7 @@
 }
 
 .body {
-  max-width: 38rem;
+  max-width: 44rem;
   margin-top: 2rem;
   font-size: 1.0625rem;
   line-height: 1.6;

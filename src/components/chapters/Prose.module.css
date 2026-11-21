@@ -1,6 +1,7 @@
-/* Cerca de 65 caracteres por linha, a medida mais confortável para ler. */
+/* Até cerca de 75 letras por linha: largo o bastante para aproveitar a
+   tela, sem ficar cansativo de ler. */
 .prose {
-  max-width: 38rem;
+  max-width: 44rem;
   margin-top: 2rem;
   font-size: clamp(1.0625rem, 2.2vw, 1.1875rem);
   line-height: 1.6;

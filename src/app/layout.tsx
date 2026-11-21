@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { siteTitle } from "@/lib/site";
+import { seriesLengthText, seriesStartYear } from "@/lib/temperatureData";
 import "./globals.css";
 
 // next/font baixa as fontes no build e serve do próprio site: sem pedido ao
@@ -18,8 +19,8 @@ const sans = Inter({
 
 export const metadata: Metadata = {
   title: siteTitle,
-  description:
-    "Mais de 75 anos de temperatura diária em Porto Alegre, de 1950 até hoje, contados em gráficos.",
+  // Montada com os dados, para acompanhar a série quando um ano novo entra.
+  description: `${seriesLengthText} de temperatura diária em Porto Alegre, de ${seriesStartYear} até hoje, contados em gráficos.`,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

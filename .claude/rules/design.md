@@ -13,6 +13,8 @@
 - Paleta de temperatura divergente, do frio ao quente: azul de um lado, vermelho-alaranjado do outro e cinza neutro no meio (`--temp-cold-3` até `--temp-hot-3`). Quanto mais extremo, mais claro e intenso, porque no fundo escuro é o que mais salta aos olhos. Os dois lados têm a mesma claridade em cada degrau. Todos os tons passam de 4:1 contra o fundo. Ao mudar a paleta ou o fundo, validar o contraste de novo com cálculo, não no olho.
 - A cor nunca carrega a informação sozinha: sempre junto com rótulo, posição ou texto.
 - `border-radius` pequeno, por volta de 4px.
+- Largura (decisão de 21/11/2026): todas as seções têm sempre a mesma largura, de margem a margem (`--page-gutter`). Ou tudo cresce, ou tudo para junto: nunca uma seção mais larga que as outras.
+- Telas largas (decisão de 21/11/2026): acima de 1440px, o tamanho base das letras cresce com a tela (16px até cerca de 21,5px em 2536px), em `globals.css`. Textos, colunas, espaços e rótulos dos gráficos usam `rem`, então a página inteira cresce junto. Por isso, tamanho de letra sempre em `rem`, nunca em `px`, inclusive dentro dos SVGs.
 - Sem fundos de seção alternando cor e sem enfiar conteúdo em cards genéricos.
 - Acessibilidade: cada gráfico com descrição em texto do que mostra. Imagens sempre com `alt` descritivo, nunca vazio.
 

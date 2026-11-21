@@ -71,6 +71,13 @@
 }
 
 html {
+  /* Tamanho base das letras. Até 1440px de largura, 16px (o padrão). Acima
+     disso, cresce 0,5px a cada 100px de tela (cerca de 21,5px em 2536px).
+     Como textos, colunas, espaços e rótulos dos gráficos são medidos em
+     `rem`, a página inteira cresce junto, de cima a baixo, em vez de só os
+     gráficos esticarem. */
+  font-size: max(16px, calc(16px + (100vw - 1440px) * 0.005));
+
   /* Avisa o navegador que a página é escura: barras de rolagem e campos de
      formulário nativos também ficam escuros. */
   color-scheme: dark;

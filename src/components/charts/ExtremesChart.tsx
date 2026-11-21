@@ -35,7 +35,7 @@ const panels = [
 
 // Altura reservada para o título de cada painel, espaço entre os painéis e
 // faixa de baixo para os rótulos das décadas.
-const titleHeight = 24;
+const titleHeight = 32;
 const panelGap = 28;
 const bottomMargin: Record<ChartLayout, number> = { narrow: 36, wide: 40, extraWide: 40 };
 const leftMargin = 32;
@@ -111,7 +111,7 @@ export function ExtremesChart({ layout, width, height }: ChartSize) {
       <svg className={styles.chart} viewBox={`0 0 ${width} ${height}`} aria-hidden="true">
         {panelLayouts.map((panel) => (
           <g key={panel.key}>
-            <text className={styles.panelTitle} x={0} y={panel.top - 12}>
+            <text className={styles.panelTitle} x={0} y={panel.top - 20}>
               {panel.title}
             </text>
 
@@ -126,7 +126,15 @@ export function ExtremesChart({ layout, width, height }: ChartSize) {
                   y1={panel.y(tick)}
                   y2={panel.y(tick)}
                 />
-                <text className={styles.axisLabel} x={0} y={panel.y(tick)} dy="0.32em">
+                {/* Número alinhado pela direita, logo antes do gráfico: mesmo com
+                    as letras maiores das telas largas, ele nunca encosta nos dados. */}
+                <text
+                  className={styles.axisLabel}
+                  x={plotLeft - 8}
+                  y={panel.y(tick)}
+                  dy="0.32em"
+                  textAnchor="end"
+                >
                   {tick}
                 </text>
               </g>

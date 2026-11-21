@@ -16,7 +16,7 @@ export const summerDays = 90;
 const columns: Record<ChartLayout, number> = { narrow: 15, wide: 30, extraWide: 45 };
 
 // Altura da linha do rótulo acima de cada grade e espaço entre as grades.
-const labelHeight = 46;
+const labelHeight = 54;
 const groupGap = 32;
 
 // Altura do gráfico para uma largura e um layout: dois grupos, cada um com
@@ -64,10 +64,10 @@ export function SummerChart({ layout, width, height }: ChartSize) {
           <g key={group.key} transform={`translate(0 ${top})`}>
             {/* Rótulo em duas linhas, para caber no celular: o período em
                 cima e o número embaixo. */}
-            <text className={styles.label} x={0} y={14}>
+            <text className={styles.label} x={0} y={16}>
               {group.label}
             </text>
-            <text className={styles.labelValue} x={0} y={34}>
+            <text className={styles.labelValue} x={0} y={40}>
               {formatNumber(group.value, { fractionDigits: 1 })} dias acima de{" "}
               {meta.thresholds.veryHotDay}&nbsp;°C
             </text>

@@ -66,6 +66,8 @@
 
 - Textos da abertura e descrição da página vindo do JSON, aprovados em 21/11/2026: `seriesLengthText` ("Mais de 76 anos", conta os anos completos e põe "Mais de" quando há meses do ano seguinte) e `seriesStartYear`, em `temperatureData.ts`.
 
+- Indicador de progresso (21/11/2026): `ProgressIndicator`. Na tela larga, um pontinho por seção na margem direita (botões que levam à seção, com o nome no hover ou foco); no celular, linha fina no topo. Só aparece depois da abertura. As seções são achadas pelo atributo `data-progress-label`.
+
 ## Próximos passos
 
 Ordem combinada com a Flávia em 19/11/2026:

@@ -28,6 +28,9 @@ const wmoMean = mean(
 const differenceFromBaseline = recent.years.meanTemp - baseline.years.meanTemp;
 const differenceFromWmo = recent.years.meanTemp - wmoMean;
 
+// Rótulo acima do título, também usado pelo indicador de progresso.
+const kicker = "Capítulo 5 · Os dados";
+
 const firstYear = years[0].year;
 const lastYear = years.at(-1)!.year;
 
@@ -44,7 +47,11 @@ export function MethodologyChapter() {
   const titleId = useId();
 
   return (
-    <section className={chapterStyles.chapter} aria-labelledby={titleId}>
+    <section
+      className={chapterStyles.chapter}
+      aria-labelledby={titleId}
+      data-progress-label={kicker}
+    >
       {/* Grade própria do capítulo 5 (ver o CSS): na tela larga, a abertura
           fica ao lado do mapa, e o resto do texto se divide em duas colunas
           embaixo, com a da direita sob o mapa, como numa página de jornal. */}
@@ -53,7 +60,7 @@ export function MethodologyChapter() {
         style={{ "--map-aspect": mapAspect } as CSSProperties}
       >
         <div className={styles.intro}>
-          <p className={chapterStyles.kicker}>Capítulo 5 · Os dados</p>
+          <p className={chapterStyles.kicker}>{kicker}</p>
           <h2 id={titleId} className={chapterStyles.title}>
             Como os dados foram feitos
           </h2>

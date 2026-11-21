@@ -5,14 +5,13 @@ import { ChartLegend } from "@/components/charts/ChartLegend";
 import { distanceKm, GridMap, gridStep, mapAspect } from "@/components/charts/GridMap";
 import mapData from "@/data/portoAlegreMap.json";
 import { formatDate, formatNumber, formatTemperature } from "@/lib/format";
+import { repositoryUrl } from "@/lib/site";
 import { temperatureData } from "@/lib/temperatureData";
 import chapterStyles from "./Chapter.module.css";
 import styles from "./MethodologyChapter.module.css";
 
 const { comparison, meta, summers, years } = temperatureData;
 const { baseline, recent } = comparison;
-
-const repositoryUrl = "https://github.com/flaviafigueredo/poa-heat";
 
 // Coordenadas com duas casas, no padrão brasileiro ("-30,03").
 const formatCoordinate = (value: number) => formatNumber(value, { fractionDigits: 2 });

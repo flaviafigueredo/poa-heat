@@ -4,18 +4,22 @@ import { NightsChapter } from "@/components/chapters/NightsChapter";
 import { SummerChapter } from "@/components/chapters/SummerChapter";
 import { TrendChapter } from "@/components/chapters/TrendChapter";
 import { Dashboard } from "@/components/dashboard/Dashboard";
+import { Footer } from "@/components/footer/Footer";
 import { Opening } from "@/components/opening/Opening";
 
 export default function Home() {
   return (
-    <main>
-      <Opening />
-      <TrendChapter />
-      <ExtremesChapter />
-      <NightsChapter />
-      <SummerChapter />
-      <Dashboard />
-      <MethodologyChapter />
-    </main>
+    <>
+      <main>
+        <Opening />
+        <TrendChapter />
+        <ExtremesChapter />
+        <NightsChapter />
+        <SummerChapter />
+        <Dashboard />
+        <MethodologyChapter />
+      </main>
+      <Footer />
+    </>
   );
 }

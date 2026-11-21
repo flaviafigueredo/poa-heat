@@ -9,13 +9,17 @@
   margin-inline: auto;
 }
 
+/* Número e tema do capítulo, como a abertura de capítulo de um livro: uma
+   linha fina em cima e o texto em serifa itálica, discreto, em caixa
+   normal. */
 .kicker {
-  margin: 0 0 0.75rem;
-  color: var(--color-hot);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  margin: 0 0 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  font-style: italic;
 }
 
 .title {

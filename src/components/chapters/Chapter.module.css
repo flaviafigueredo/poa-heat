@@ -2,11 +2,20 @@
   padding: 6rem var(--page-gutter);
 }
 
-/* Telas estreitas e médias: uma coluna só, no centro, com o gráfico depois
-   do texto. */
+/* Celular: uma coluna só, no centro, com o gráfico depois do texto. */
 .inner {
   max-width: 45rem;
   margin-inline: auto;
+}
+
+/* A partir de 900px, o capítulo vai de margem a margem, como o painel e o
+   footer: todas as seções têm sempre a mesma largura. Até 1279px continua
+   uma coluna só; o texto fica limitado a uma largura boa de ler (ver
+   Prose) e o gráfico ocupa a largura toda. */
+@media (min-width: 900px) {
+  .inner {
+    max-width: none;
+  }
 }
 
 /* Número e tema do capítulo, como a abertura de capítulo de um livro: uma

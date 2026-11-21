@@ -15,6 +15,13 @@
   margin-inline: auto;
 }
 
+/* A partir de 900px, de margem a margem, como as outras seções. */
+@media (min-width: 900px) {
+  .layout {
+    max-width: none;
+  }
+}
+
 /* Telas largas: grade de duas colunas, com as mesmas medidas dos outros
    capítulos (ver Chapter.module.css). Em cima, a abertura do texto ao lado
    do mapa. Embaixo, o resto do texto em duas colunas, com a da direita sob

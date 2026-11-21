@@ -1,13 +1,5 @@
-/* Celular e telas médias: uma coluna só, no centro, na ordem do HTML. O
-   mapa vem logo depois de "O que é reanálise", que é o trecho que ele
-   explica. */
-/* Os blocos de baixo não precisam do espaço extra acima do texto: a
-   distância vem do espaço entre as linhas da grade. */
-.left,
-.right {
-  margin-top: 0;
-}
-
+/* Celular e telas médias: uma coluna só, na ordem do HTML. O mapa vem
+   logo depois de "O que é reanálise", que é o trecho que ele explica. */
 .layout {
   display: grid;
   row-gap: 2.5rem;
@@ -22,27 +14,31 @@
   }
 }
 
-/* Telas largas: grade de duas colunas, com as mesmas medidas dos outros
-   capítulos (ver Chapter.module.css). Em cima, a abertura do texto ao lado
-   do mapa. Embaixo, o resto do texto em duas colunas, com a da direita sob
-   o mapa, como numa página de jornal. Assim nenhuma das colunas fica vazia
-   enquanto a outra continua. */
+/* Os quatro blocos de baixo são independentes, como perguntas de um FAQ:
+   uma linha fina em cima de cada um marca onde ele começa. */
+.calculations,
+.baseline,
+.limits,
+.credits {
+  margin-top: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-grid);
+}
+
+/* Telas largas: duas colunas, com as mesmas medidas dos outros capítulos
+   (ver Chapter.module.css). Em cima, a abertura ao lado do mapa. Embaixo,
+   os quatro blocos em pares, lidos linha a linha: cada bloco é completo e
+   o texto nunca continua na outra coluna. As linhas da grade igualam a
+   altura dos dois blocos de cada par. */
 @media (min-width: 1280px) {
   .layout {
-    /* Largura do mapa: a maior que ainda cabe na altura da tela (ver
-       GridMap.module.css). A coluna do mapa nunca passa dela, e a sobra
-       vai para o meio, entre as colunas (`space-between`), em vez de
-       ficar vazia à direita. */
-    --map-width: calc((100svh - 6rem) * var(--map-aspect));
-
-    grid-template-columns: minmax(26rem, 40%) minmax(0, var(--map-width));
+    grid-template-columns: minmax(26rem, 40%) minmax(0, 1fr);
     grid-template-areas:
       "intro map"
-      "left right";
-    justify-content: space-between;
+      "calculations baseline"
+      "limits credits";
     column-gap: clamp(4rem, 5vw, 8rem);
     row-gap: 3rem;
-    max-width: none;
   }
 
   .intro {
@@ -56,22 +52,35 @@
     padding-top: 6rem;
   }
 
-  .left {
-    grid-area: left;
+  .calculations {
+    grid-area: calculations;
   }
 
-  .right {
-    grid-area: right;
+  .baseline {
+    grid-area: baseline;
   }
 
+  .limits {
+    grid-area: limits;
+  }
+
+  .credits {
+    grid-area: credits;
+  }
 }
 
 .body {
-  max-width: 44rem;
   margin-top: 2rem;
   font-size: 1.0625rem;
   line-height: 1.6;
   text-wrap: pretty;
+}
+
+/* O texto para em 44rem, cerca de 75 letras por linha. O bloco em si
+   ocupa a coluna toda, para a linha fina em cima dele ir de ponta a ponta
+   da coluna. */
+.body > * {
+  max-width: 44rem;
 }
 
 /* Os blocos se separam só por título e espaço, sem caixa em volta. */
@@ -121,35 +130,4 @@
   outline: 2px solid var(--color-hot);
   outline-offset: 2px;
   border-radius: 2px;
-}
-
-/* Telas extralargas (a partir de 1800px, a mesma largura em que os gráficos
-   mudam de versão): três colunas em cima (abertura, mapa e as contas) e,
-   embaixo, os limites e os créditos correndo em três colunas de jornal,
-   de uma margem à outra. Com duas colunas, sobraria um vão grande no meio. */
-@media (min-width: 1800px) {
-  .layout {
-    grid-template-columns:
-      minmax(26rem, 32rem) minmax(0, var(--map-width)) minmax(26rem, 32rem);
-    grid-template-areas:
-      "intro map left"
-      "right right right";
-  }
-
-  .left {
-    padding-top: 6rem;
-  }
-
-  .right {
-    max-width: none;
-    columns: 3;
-    column-gap: clamp(4rem, 5vw, 8rem);
-  }
-
-  /* Título nunca sozinho no pé de uma coluna. Os itens da lista podem
-     continuar na coluna seguinte, como num jornal, para as três colunas
-     terminarem quase na mesma altura. */
-  .right h3 {
-    break-after: avoid;
-  }
 }

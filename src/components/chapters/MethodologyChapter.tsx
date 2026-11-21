@@ -1,8 +1,8 @@
 import { mean } from "d3-array";
-import { useId, type CSSProperties } from "react";
+import { useId } from "react";
 import { ChartFigure } from "@/components/charts/ChartFigure";
 import { ChartLegend } from "@/components/charts/ChartLegend";
-import { distanceKm, GridMap, gridStep, mapAspect } from "@/components/charts/GridMap";
+import { distanceKm, GridMap, gridStep } from "@/components/charts/GridMap";
 import mapData from "@/data/portoAlegreMap.json";
 import { formatDate, formatNumber, formatTemperature } from "@/lib/format";
 import { repositoryUrl } from "@/lib/site";
@@ -53,12 +53,10 @@ export function MethodologyChapter() {
       data-progress-label={kicker}
     >
       {/* Grade própria do capítulo 5 (ver o CSS): na tela larga, a abertura
-          fica ao lado do mapa, e o resto do texto se divide em duas colunas
-          embaixo, com a da direita sob o mapa, como numa página de jornal. */}
-      <div
-        className={styles.layout}
-        style={{ "--map-aspect": mapAspect } as CSSProperties}
-      >
+          fica ao lado do mapa, e os outros quatro blocos vêm embaixo, em
+          pares, lidos linha a linha. Cada bloco é completo: o texto nunca
+          continua na outra coluna. */}
+      <div className={styles.layout}>
         <div className={styles.intro}>
           <p className={chapterStyles.kicker}>{kicker}</p>
           <h2 id={titleId} className={chapterStyles.title}>
@@ -103,13 +101,12 @@ export function MethodologyChapter() {
               é que cada número representa uma área, e não o que um termômetro marcaria numa
               rua da cidade.
             </p>
-
           </div>
         </div>
         <div className={styles.map}>
           <MapFigure />
         </div>
-        <div className={`${styles.body} ${styles.left}`}>
+        <div className={`${styles.body} ${styles.calculations}`}>
           <h3>Como as contas foram feitas</h3>
           <ul>
             <li>
@@ -135,7 +132,8 @@ export function MethodologyChapter() {
               Quando entra um ano novo, a página se atualiza sozinha.
             </li>
           </ul>
-
+        </div>
+        <div className={`${styles.body} ${styles.baseline}`}>
           <h3>Por que comparar com {baseline.startYear} a {baseline.endYear}</h3>
           <p>
             É a referência clássica nos estudos de clima, de antes da maior parte do
@@ -149,9 +147,8 @@ export function MethodologyChapter() {
             de {formatTemperature(differenceFromBaseline, { signed: true })}. A diferença é
             menor porque essa referência já inclui anos mais quentes.
           </p>
-
         </div>
-        <div className={`${styles.body} ${styles.right}`}>
+        <div className={`${styles.body} ${styles.limits}`}>
           <h3>Limites da análise</h3>
           <ul>
             <li>
@@ -181,7 +178,8 @@ export function MethodologyChapter() {
               já passaram e ainda podem mudar.
             </li>
           </ul>
-
+        </div>
+        <div className={`${styles.body} ${styles.credits}`}>
           <h3>Imagens e código</h3>
           <p>
             A Terra da abertura usa imagens da NASA:{" "}

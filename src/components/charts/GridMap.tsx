@@ -25,9 +25,9 @@ const width = 1000;
 const height =
   (width * (bounds.north - bounds.south)) / ((bounds.east - bounds.west) * lngScale);
 
-// Proporção do mapa (largura dividida pela altura). O capítulo 5 usa para
-// dar à coluna do mapa a largura exata dele.
-export const mapAspect = width / height;
+// Proporção do mapa (largura dividida pela altura), usada no CSS para o
+// mapa nunca passar da altura da tela.
+const mapAspect = width / height;
 
 const projectX = (lng: number) => ((lng - bounds.west) / (bounds.east - bounds.west)) * width;
 const projectY = (lat: number) => ((bounds.north - lat) / (bounds.north - bounds.south)) * height;

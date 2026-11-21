@@ -1,0 +1,104 @@
+/* O mapa nunca passa da altura da tela, para caber inteiro nela. Os 6rem
+   descontam a legenda acima do mapa e uma folga. A largura acompanha a
+   altura pela proporção do recorte (--map-aspect, vinda do componente). */
+.map {
+  position: relative;
+  max-width: min(100%, calc((100svh - 6rem) * var(--map-aspect)));
+}
+
+.map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Água: um azul bem escuro, misturado ao fundo da página, só para separar
+   do chão. Não usa a paleta de temperatura, porque lá azul quer dizer frio. */
+.water {
+  fill: color-mix(in srgb, var(--color-atmosphere) 20%, var(--color-background));
+}
+
+.land {
+  fill: var(--color-surface);
+  stroke: var(--color-border);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.portoAlegre {
+  fill: var(--color-grid);
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* A grade explica a reanálise, então aparece, mas bem apagada. */
+.grid {
+  stroke: var(--color-text-muted);
+  stroke-opacity: 0.3;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.cell {
+  fill: var(--temp-hot-2);
+  fill-opacity: 0.16;
+  stroke: var(--temp-hot-2);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Os dois pontos com um anel na cor do fundo, para se separarem do que
+   está embaixo. */
+.gridPoint,
+.requestedPoint {
+  stroke: var(--color-background);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.gridPoint {
+  fill: var(--temp-hot-2);
+}
+
+.requestedPoint {
+  fill: var(--color-text);
+}
+
+.scale {
+  stroke: var(--color-text-muted);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Rótulos centralizados no ponto da posição. */
+.cityLabel,
+.waterLabel,
+.scaleLabel {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.cityLabel {
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.waterLabel {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+/* O rótulo da escala fica logo acima da barra, alinhado com o começo dela. */
+.scaleLabel {
+  transform: translate(0, calc(-100% - 4px));
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}

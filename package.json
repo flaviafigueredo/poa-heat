@@ -8,7 +8,8 @@
     "build": "next build",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "data": "node scripts/fetch-temperature.ts"
+    "data": "node scripts/fetch-temperature.ts",
+    "map": "node scripts/build-map.ts"
   },
   "engines": {
     "node": ">=20.9.0"

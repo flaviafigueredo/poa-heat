@@ -13,3 +13,13 @@ const baselineMean = data.comparison.baseline.years.meanTemp;
 export function getYearAnomaly(year: YearSummary): number {
   return year.meanTemp - baselineMean;
 }
+
+// Ano em que a série começa, para textos como "de 1950 até hoje".
+export const seriesStartYear = Number(data.meta.startDate.slice(0, 4));
+
+// Tamanho da série em palavras, para a abertura e a descrição da página.
+// Conta os anos completos nos dados (hoje, 1950 a 2025) e põe "Mais de" na
+// frente quando já há meses do ano seguinte, ou seja, quando o último dia
+// dos dados não é 31 de dezembro.
+const hasPartialYear = !data.meta.endDate.endsWith("-12-31");
+export const seriesLengthText = `${hasPartialYear ? "Mais de " : ""}${data.years.length} anos`;

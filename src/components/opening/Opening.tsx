@@ -1,5 +1,6 @@
 import { useId } from "react";
 import { siteTitle } from "@/lib/site";
+import { seriesLengthText, seriesStartYear } from "@/lib/temperatureData";
 import { GlobeLoader } from "./GlobeLoader";
 import styles from "./Opening.module.css";
 import { Starfield } from "./Starfield";
@@ -34,8 +35,8 @@ export function Opening() {
           {siteTitle}
         </h1>
         <p className={styles.dek}>
-          Mais de 75 anos de temperatura diária, de 1950 até hoje, mostram o
-          que mudou nos dias e nas noites da cidade.
+          {seriesLengthText} de temperatura diária, de {seriesStartYear} até hoje,
+          mostram o que mudou nos dias e nas noites da cidade.
         </p>
       </div>
     </section>

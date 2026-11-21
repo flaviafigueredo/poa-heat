@@ -64,15 +64,15 @@
 
 - Footer aprovado em 21/11/2026: `Footer`, depois do `<main>`, com "Feito com 🧡 por Flávia Figueredo" (link para o portfólio, flaviafigueredo.dev.br) e o link do repositório. Os dois endereços ficam em `src/lib/site.ts`. Quando as duas frases não cabem na mesma linha, elas empilham no centro (consulta `@container` pela largura do próprio footer).
 
+- Textos da abertura e descrição da página vindo do JSON, aprovados em 21/11/2026: `seriesLengthText` ("Mais de 76 anos", conta os anos completos e põe "Mais de" quando há meses do ano seguinte) e `seriesStartYear`, em `temperatureData.ts`.
+
 ## Próximos passos
 
 Ordem combinada com a Flávia em 19/11/2026:
 
-1. Textos da abertura e descrição da página vindo do JSON (ver "Pendências pequenas").
-2. Revisão do design.
-3. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
+1. Revisão do design.
+2. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
 
 ## Pendências pequenas
 
 - `npm audit` zerado em 16/11/2026 (Next e `eslint-config-next` 16.4.6, mais `npm audit fix`). Nunca rodar `npm audit fix --force`, que pode instalar versões antigas do `eslint-config-next`.
-- Textos "Mais de 75 anos" e "de 1950 até hoje" na abertura (`Opening.tsx`) e na descrição da página (`layout.tsx`) ainda estão escritos à mão. Devem passar a vir do JSON (`meta.startDate`).

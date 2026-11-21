@@ -4,6 +4,8 @@ Matéria de jornalismo de dados que responde à pergunta com a temperatura diár
 
 **Veja no ar:** [poa-heat.pages.dev](https://poa-heat.pages.dev/)
 
+![Abertura da página: a Terra vista do espaço, com a América do Sul em destaque e Porto Alegre marcada com um ponto laranja. À esquerda, o título "Porto Alegre está ficando mais quente?" e a frase "Mais de 76 anos de temperatura diária, de 1950 até hoje, mostram o que mudou nos dias e nas noites da cidade."](docs/screenshot.png)
+
 ## O que a página mostra
 
 1. **A tendência:** a temperatura média de cada ano, com a linha de tendência e a base de 1961 a 1990.
@@ -65,6 +67,8 @@ npm run typecheck
 
 A página mostra o que aconteceu com a temperatura em Porto Alegre, mas não prova sozinha por que aconteceu. Os limites da análise estão explicados no capítulo 5.
 
-## Autoria
+## Autoria e licença
 
 Feito por [Flávia Figueredo](https://flaviafigueredo.dev.br).
+
+Todos os direitos reservados: o código fica público só para leitura e não pode ser copiado nem reutilizado sem autorização. Os dados e imagens de terceiros seguem as licenças das fontes. Detalhes em [LICENSE](LICENSE).

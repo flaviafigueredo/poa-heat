@@ -62,14 +62,15 @@
   - Contornos da malha municipal do IBGE, gerados por `scripts/build-map.ts` (`npm run map`) em `src/data/portoAlegreMap.json` (14,5 KB, recortados e simplificados). A malha não tem água: o Guaíba é o espaço entre as cidades. Não entra no workflow mensal.
   - Os nomes no mapa são HTML por cima do SVG, para o texto ter o mesmo tamanho em qualquer tela. O mapa sai uma vez só no HTML, sem `ResponsiveChart`.
 
+- Footer aprovado em 21/11/2026: `Footer`, depois do `<main>`, com "Feito com 🧡 por Flávia Figueredo" (link para o portfólio, flaviafigueredo.dev.br) e o link do repositório. Os dois endereços ficam em `src/lib/site.ts`. Quando as duas frases não cabem na mesma linha, elas empilham no centro (consulta `@container` pela largura do próprio footer).
+
 ## Próximos passos
 
 Ordem combinada com a Flávia em 19/11/2026:
 
-1. Footer.
-2. Textos da abertura e descrição da página vindo do JSON (ver "Pendências pequenas").
-3. Revisão do design.
-4. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
+1. Textos da abertura e descrição da página vindo do JSON (ver "Pendências pequenas").
+2. Revisão do design.
+3. No fim do projeto: reescrever o `README.md` (hoje é o padrão do create-next-app) para apresentar o projeto a quem visita o repo.
 
 ## Pendências pequenas
 

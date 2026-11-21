@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Porto Alegre está ficando mais quente?
 
-## Getting Started
+Matéria de jornalismo de dados que responde à pergunta com a temperatura diária de Porto Alegre desde 1950. Uma página com rolagem: a Terra em 3D se aproxima da cidade, e os capítulos mostram, com gráficos, o que mudou na média do ano, nos dias de calor forte, nas noites quentes e no verão.
 
-First, run the development server:
+**Veja no ar:** [poa-heat.pages.dev](https://poa-heat.pages.dev/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## O que a página mostra
+
+1. **A tendência:** a temperatura média de cada ano, com a linha de tendência e a base de 1961 a 1990.
+2. **Os extremos:** quantos dias por ano passaram de 30 °C e de 35 °C, por década.
+3. **As noites:** quantas noites não baixaram de 20 °C, com a média de cada década.
+4. **O teu verão vs o dos teus pais:** um verão típico de hoje comparado com o de 1961 a 1990.
+5. **Explore os dados:** painel com as listras do calor, os recordes, a comparação de um ano escolhido com o último e os dias de calor forte em cada verão.
+6. **Como os dados foram feitos:** fonte, o que é reanálise, como as contas foram feitas e os limites da análise.
+
+Todos os números da página vêm dos dados. Quando entra um ano novo, textos, destaques e gráficos se atualizam sozinhos.
+
+## Como funciona
+
+```
+Open-Meteo (ERA5-Land)
+        │  script em TypeScript busca a temperatura diária e calcula os totais
+        ▼
+src/data/temperature.json  (salvo no repositório)
+        │  GitHub Actions roda o script todo dia 10 e faz commit se os dados mudaram
+        ▼
+Cloudflare Pages  (novo deploy a cada push na main)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O site é estático e nunca chama a API no navegador: ele só lê o JSON gerado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Escolhas técnicas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js com exportação estática**, TypeScript e CSS Modules.
+- **Gráficos com D3 só para as contas** (`d3-scale`, `d3-shape` e `d3-array`) e **React para desenhar o SVG**. Os gráficos saem prontos no HTML do build, antes do JavaScript carregar; só a camada de interação roda no navegador.
+- **Cada gráfico tem três versões** (celular, larga e extralarga), escolhidas pela largura que ele ocupa, para os rótulos ficarem sempre perto do tamanho do texto. Acima de 1440px, a página inteira cresce junto com a tela.
+- **Acessibilidade:** cada gráfico tem descrição em texto e tabela com os números, dá para navegar pelos pontos com as setas do teclado, e quem ativa `prefers-reduced-motion` vê tudo sem animação.
+- **Globo 3D com `react-globe.gl`**, carregado só no navegador, com texturas de até 4096 px para funcionar em celulares mais antigos.
+- **Mapa da grade de dados** feito com a malha de municípios do IBGE, recortada e simplificada por um script e salva no repositório.
 
-## Learn More
+## Rodar na sua máquina
 
-To learn more about Next.js, take a look at the following resources:
+Precisa do Node 24 (a versão está no `.nvmrc`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+npm run dev        # página em http://localhost:3000
+npm run build      # gera o site estático na pasta out
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Outros comandos:
 
-## Deploy on Vercel
+```bash
+npm run data       # busca os dados na Open-Meteo e atualiza src/data/temperature.json
+npm run map        # refaz o mapa do capítulo 5 a partir da malha do IBGE
+npm run lint
+npm run typecheck
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Dados e créditos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Temperatura:** [Open-Meteo](https://open-meteo.com/), licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), modelo ERA5-Land, do Copernicus.
+- **Limites das cidades:** [malha municipal do IBGE](https://servicodados.ibge.gov.br/api/docs/malhas?versao=3).
+- **Imagens da Terra:** NASA, [Blue Marble Next Generation](https://visibleearth.nasa.gov/collection/1484/blue-marble), com relevo feito com dados GEBCO.
+
+A página mostra o que aconteceu com a temperatura em Porto Alegre, mas não prova sozinha por que aconteceu. Os limites da análise estão explicados no capítulo 5.
+
+## Autoria
+
+Feito por [Flávia Figueredo](https://flaviafigueredo.dev.br).

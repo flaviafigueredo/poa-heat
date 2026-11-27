@@ -18,11 +18,16 @@ describe("seriesLengthText", () => {
     expect(seriesLengthText).toContain(`${data.years.length} anos`);
   });
 
-  it("começa com 'Mais de' porque os dados vão além do último ano completo", () => {
-    // Os dados atuais terminam antes de 31 de dezembro, então há um ano
-    // parcial. Se isso mudar no futuro, o teste avisa.
-    expect(data.meta.endDate.endsWith("-12-31")).toBe(false);
-    expect(seriesLengthText).toMatch(/^Mais de /);
+  it("começa com 'Mais de' quando há ano parcial, sem ele quando não há", () => {
+    // Em janeiro o workflow gera endDate em 31 de dezembro (ano completo),
+    // nos outros meses o ano ainda está em andamento.
+    const hasPartialYear = !data.meta.endDate.endsWith("-12-31");
+
+    if (hasPartialYear) {
+      expect(seriesLengthText).toMatch(/^Mais de /);
+    } else {
+      expect(seriesLengthText).not.toMatch(/^Mais de /);
+    }
   });
 
   it("segue o formato esperado", () => {

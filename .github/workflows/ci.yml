@@ -1,4 +1,4 @@
-# Roda os testes e o typecheck em todo PR e push na main.
+# Roda os testes, o typecheck e o lint em todo PR e push na main.
 
 name: CI
 
@@ -29,3 +29,6 @@ jobs:
 
       - name: Type check
         run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint

@@ -1,6 +1,7 @@
 # Atualiza os dados de temperatura uma vez por mês.
 # Roda o script da Open-Meteo e, se o JSON mudou, faz commit na main.
 # Esse commit dispara o deploy automático do Cloudflare Pages.
+# No fim, abre uma issue já fechada com o resultado, que chega por email.
 
 name: Update temperature data
 
@@ -14,10 +15,11 @@ on:
   # Mostra o botão "Run workflow" na aba Actions, para rodar à mão.
   workflow_dispatch:
 
-# Por padrão o workflow só pode ler o repositório. Este precisa escrever,
-# porque faz commit do JSON atualizado.
+# Por padrão o workflow só pode ler o repositório. Este precisa escrever
+# (commit do JSON) e abrir issues (aviso mensal).
 permissions:
   contents: write
+  issues: write
 
 jobs:
   update-data:
@@ -48,10 +50,13 @@ jobs:
 
       # `git diff --quiet` termina com sucesso quando não há mudança.
       # Só faz commit e push quando o JSON mudou de fato.
+      # A variável DATA_CHANGED fica disponível para o step seguinte.
       - name: Commit updated data
+        id: commit
         run: |
           if git diff --quiet -- src/data/temperature.json; then
             echo "Sem mudanças nos dados."
+            echo "DATA_CHANGED=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
@@ -59,3 +64,22 @@ jobs:
           git add src/data/temperature.json
           git commit -m "chore(data): update temperature data"
           git push
+          echo "DATA_CHANGED=true" >> "$GITHUB_OUTPUT"
+
+      # Abre uma issue já fechada com o resultado. Como nasce fechada, não
+      # polui a lista de issues abertas, mas fica de histórico e manda email.
+      - name: Notify via closed issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          end_date=$(node -e "console.log(JSON.parse(require('fs').readFileSync('src/data/temperature.json','utf8')).meta.endDate)")
+
+          if [ "${{ steps.commit.outputs.DATA_CHANGED }}" = "true" ]; then
+            title="Dados atualizados até ${end_date}"
+            body="O workflow atualizou o JSON e fez commit na main. O deploy é automático."
+          else
+            title="Sem mudanças nos dados (${end_date})"
+            body="O JSON já estava atualizado. Nenhum commit foi feito."
+          fi
+
+          gh issue create --title "$title" --body "$body" | xargs gh issue close

@@ -27,16 +27,24 @@ jobs:
         uses: actions/checkout@v7
 
       # Usa a mesma versão do Node do projeto, lida do .nvmrc.
-      # Não precisa de npm install: o script só usa recursos do próprio Node.
       - name: Set up Node
         uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
 
       # Se a API falhar ou vier um dia sem valor, o script termina com erro,
       # o workflow para aqui e nada é commitado.
       - name: Fetch temperature data
         run: npm run data
+
+      # Roda os testes com os dados novos. Se alguma conta quebrar, o workflow
+      # para e nada é commitado.
+      - name: Run tests
+        run: npm test
 
       # `git diff --quiet` termina com sucesso quando não há mudança.
       # Só faz commit e push quando o JSON mudou de fato.
